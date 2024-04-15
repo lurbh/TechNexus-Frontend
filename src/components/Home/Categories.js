@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import CategoriesCard from "../Main/CategoriesCard";
 import { CategoriesContext } from "../../context/CategoriesContext";
 
-export default function Categories(){
+export default function Categories()
+{
     const context = useContext(CategoriesContext);
 
     return (

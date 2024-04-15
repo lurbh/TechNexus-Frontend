@@ -1,7 +1,8 @@
 import React from "react";
 import CategoryImage from "../../assets/Smartphone-Category.png";
 
-export default function CategoriesCard(props){
+export default function CategoriesCard(props)
+{
 
     return (
         <>

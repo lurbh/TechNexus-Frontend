@@ -2,7 +2,8 @@ import React from "react";
 import logo from "../../assets/TechNexus-Logo-Clear.png"
 import '../../assets/style.css'
 
-export default function Hero() {
+export default function Hero() 
+{
     return (
         <section className="hero-section">
             <div className="section-content">

@@ -2,7 +2,8 @@ import { createContext, useState } from "react";
 
 export const CategoriesContext = createContext();
 
-export default function CategoriesContextData(props) {
+export default function CategoriesContextData(props) 
+{
     const [categories, setCategories] = useState([
         {
             category_id :1 ,

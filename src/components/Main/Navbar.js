@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/TechNexus-Logo.png"
 import '../../assets/style.css'
 
-export default function Navbar(props) {
+export default function Navbar(props) 
+{
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   let navigate = useNavigate();
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prevState) => !prevState);
   };
 
   function navigateTo(location)

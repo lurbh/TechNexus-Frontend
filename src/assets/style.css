@@ -2,6 +2,11 @@ body {
     font-family: "Roboto Condensed", sans-serif;
 }
 
+/* Common */
+.centre {
+    text-align: center;
+}
+
 /* Header Section */
 
 .header {
@@ -273,6 +278,152 @@ body {
 .news-letter-header {
     margin-left: 4rem;
     margin-bottom: 1rem;
+}
+
+/* Products */
+.product-form{
+    /* width: 80%;
+    margin-bottom: 20px;
+    margin-left: 3rem; */
+    display: grid;
+    place-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    /* margin-bottom: 15px;
+    justify-content: center;
+    text-align: left; */
+    width: 100%; 
+    margin-bottom: 15px;
+}
+
+.form-label{
+    font-weight: bold;
+    text-align: left;
+}
+
+.form-input {
+    margin-left: 1rem;
+    width: 60%; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box;
+    justify-content: center;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.form-btn {
+    width: 30%;
+    padding: 10px 20px; 
+    background-color: #551a8b; 
+    color: azure; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    justify-content: center;
+}
+
+.form-btn:hover {
+    background-color: #0056b3; /* Darker blue background color on hover */
+}
+
+.card-product {
+    display: flex; 
+    align-items: center; 
+    padding: 20px;
+    border: 1px solid azure;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 25px;
+    background-color: #95B8D1;
+}
+
+.card-product:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-product-image {
+    width: 100px; 
+    height: 100px; 
+    margin-right: 20px; 
+    border-radius: 4px; 
+    object-fit: cover; 
+}
+
+.card-product-content {
+    flex: 1; 
+    position: relative;
+}
+
+.card-product-title {
+    margin-bottom: 5px; 
+    font-size: 18px; 
+}
+
+.card-product-price {
+    margin-bottom: 5px; 
+    font-size: 16px; 
+}
+
+.card-product-description {
+    font-size: 12px;
+    max-width: 70%;
+}
+
+.card-product-buttons {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex; 
+}
+
+.btn-edit {
+    padding: 8px 12px; 
+    margin-right: 10px; 
+    border: none; 
+    border-radius: 4px;
+    cursor: pointer; 
+    background-color: goldenrod; 
+    color: white; 
+}
+
+.btn-delete {
+    padding: 8px 12px; 
+    margin-right: 10px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    background-color: red; 
+    color: white; 
+}
+
+.btn-edit:hover {
+    background-color: #967112; 
+}
+
+.btn-delete:hover {
+    background-color: #8b0000; 
+}
+
+.product-list-header {
+    text-align: center; 
+    margin: 0px;
+    margin-bottom: 1.5rem;
+}
+
+.products-section{
+    background-color: #393939;
+    padding-top: 2rem;
+}
+
+.product-list{
+    margin-block: 0px;
+    padding-inline: 40px;
+    padding-bottom: 40px;
 }
 
 /* Mobile Styles */

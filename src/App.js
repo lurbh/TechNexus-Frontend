@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Products from "./pages/Products";
 import AddProducts from "./pages/AddProducts";
+import EditProducts from "./pages/EditProducts";
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
           <Route path='' element={<Home />}/>
           <Route path='/products' element={<Products />}/>
           <Route path='/products/add' element={<AddProducts />}/>
+          <Route path='/products/edit/:productID' element={<EditProducts />}/>
+          {/* <Route path='/products/delete' element={<AddProducts />}/> */}
         </Routes>
       </Router>
     </>

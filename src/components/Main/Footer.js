@@ -2,7 +2,8 @@ import React from "react";
 import logo from "../../assets/TechNexus-Logo-Clear.png"
 import '../../assets/style.css'
 
-export default function Footer() {
+export default function Footer() 
+{
     return (
         <footer className="footer">
             <div>
