@@ -21,7 +21,7 @@ export default function EditProductsForm(props)
                 setFormState(...tempProduct);
         }
         fetchProducts()
-    }, [context.products.length])
+    }, [context, props.productID])
 
     const updateFormField = (e) => {
         setFormState({

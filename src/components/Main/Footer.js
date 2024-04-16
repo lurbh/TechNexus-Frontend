@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/TechNexus-Logo-Clear.png"
 import '../../assets/style.css'
 
+
 export default function Footer() 
 {
+    let navigate = useNavigate();
     return (
         <footer className="footer">
             <div>
@@ -13,10 +16,10 @@ export default function Footer()
                 <div className="footer-content">
                     <p>&copy; 2024 TechNexus. All rights reserved.</p>
                     <ul className="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a onClick={() => navigate("/")}>Home</a></li>
+                        <li><a onClick={() => navigate("/products")}>Products</a></li>
+                        <li><a onClick={() => navigate("/")}>About</a></li>
+                        <li><a onClick={() => navigate("/")}>Contact</a></li>
                     </ul>
                 </div>
             </div>

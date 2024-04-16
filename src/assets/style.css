@@ -7,6 +7,16 @@ body {
     text-align: center;
 }
 
+.loading {
+    font-size: 16px;
+    color: azure; 
+    font-weight: bold; 
+    text-align: center; 
+    margin: 0px;
+    margin-top: 20px; 
+    padding: 3rem;
+}
+
 /* Header Section */
 
 .header {
@@ -232,6 +242,7 @@ body {
 .footer-links li {
     display: inline;
     margin-right: 10px;
+    cursor: pointer;
 }
   
 .footer-links li:last-child {
@@ -244,6 +255,7 @@ body {
 }
   
 .footer-links a:hover {
+    color: #6c3a9b;
     text-decoration: underline;
 }
 
