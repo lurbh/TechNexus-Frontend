@@ -12,7 +12,7 @@ export default function ProductCard(props){
 
     return (
         <div className="card-product">
-            <img src="" alt="Product Card Image" className="card-product-image"/>
+            <img src="" alt="Product Card" className="card-product-image"/>
             <div className="card-product-content">
                 <h2 className="card-product-title">{props.item?props.item.product_name:"Product Name"}</h2>
                 <h3 className="card-product-price">Price : {props.item?props.item.price:"Price"} - Qty Left : ( {props.item?props.item.quantity_available:"quantity_available"} )</h3>

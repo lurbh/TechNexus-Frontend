@@ -4,11 +4,7 @@ import { ProductContext } from "../../context/ProductContext";
 
 export default function EditProductsForm(props)
 {
-    const context = useContext(ProductContext);
-
-
-
-    
+    const context = useContext(ProductContext); 
     let navigate = useNavigate();
     const [formState, setFormState] = useState({
         product_name: "",
@@ -21,11 +17,11 @@ export default function EditProductsForm(props)
     useEffect( ()=> {
         const fetchProducts = () => {
             let tempProduct = context.getProductByID(props.productID);
-            console.log(tempProduct);
-            // setFormState(tempProduct[0]);
+            if(tempProduct.length)
+                setFormState(...tempProduct);
         }
         fetchProducts()
-    }, [props.productID])
+    }, [context.products.length])
 
     const updateFormField = (e) => {
         setFormState({

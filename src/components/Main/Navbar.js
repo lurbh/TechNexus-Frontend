@@ -5,13 +5,7 @@ import '../../assets/style.css'
 
 export default function Navbar(props) 
 {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   let navigate = useNavigate();
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
-  };
 
   function navigateTo(location)
   {

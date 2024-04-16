@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import CategoriesCard from "../Main/CategoriesCard";
-import { CategoriesContext } from "../../context/CategoriesContext";
+import { ProductContext } from "../../context/ProductContext";
 
 export default function Categories()
 {
-    const context = useContext(CategoriesContext);
+    const context = useContext(ProductContext);
 
     return (
         <section className="categories-section">
