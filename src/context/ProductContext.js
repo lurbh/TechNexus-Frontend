@@ -73,6 +73,12 @@ export default function ProductContextData(props)
         }
     }
 
+    const deleteProduct = async (ProductID) => {
+        const response = await axios.delete(BASE_API_URL + `/products/${ProductID}`);
+        if(response.status===200)
+            return
+    }
+
     const getProductByID = (ProductParams) => {
         const foundProduct = products.filter((p) => p.product_id === parseInt(ProductParams)) 
         return foundProduct;
@@ -83,6 +89,7 @@ export default function ProductContextData(props)
             getProducts : () => {return products;},
             addProduct : addProduct,
             updateProduct : updateProduct,
+            deleteProduct : deleteProduct,
             getProductByID: getProductByID,
             getCategories : () => {return categories;},
             getBrands : () => {return brands;}

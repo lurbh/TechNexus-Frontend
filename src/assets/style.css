@@ -326,7 +326,7 @@ body {
 }
 
 .form-btn:hover {
-    background-color: #0056b3; /* Darker blue background color on hover */
+    background-color: #0056b3; 
 }
 
 .card-product {
@@ -424,6 +424,44 @@ body {
     margin-block: 0px;
     padding-inline: 40px;
     padding-bottom: 40px;
+}
+
+.del-holder {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.del-title {
+    margin-bottom: 20px;
+}
+
+.del-cancel {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ccc;
+    color: #333;
+}
+
+.del-cancel:hover {
+    background-color: #ddd;
+}
+
+.del-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ff0000;
+    color: white;
+}
+
+.del-delete:hover {
+    background-color: #cc0000;
 }
 
 /* Mobile Styles */

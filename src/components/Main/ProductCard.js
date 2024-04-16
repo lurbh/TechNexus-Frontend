@@ -19,7 +19,7 @@ export default function ProductCard(props){
                 <h5 className="card-product-description">{props.item?props.item.description:"Description"}</h5>
                 <div className="card-product-buttons">
                     <button className="btn-edit" onClick={(e) => {navigateTo(`/products/edit/${props.item.product_id}`)}}>Edit</button>
-                    <button className="btn-delete" onClick={(e) => {navigateTo()}}>Delete</button>
+                    <button className="btn-delete" onClick={(e) => {navigateTo(`/products/delete/${props.item.product_id}`)}}>Delete</button>
                 </div>
             </div>
         </div>
