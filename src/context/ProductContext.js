@@ -76,7 +76,12 @@ export default function ProductContextData(props)
     const deleteProduct = async (ProductID) => {
         const response = await axios.delete(BASE_API_URL + `/products/${ProductID}`);
         if(response.status===200)
-            return
+        {
+            const cloneproducts = products.slice();
+            const indexToUpdate = cloneproducts.findIndex((p) => p.product_id===ProductID)
+            cloneproducts.splice(indexToUpdate,1);
+            setProducts(cloneproducts);
+        }
     }
 
     const getProductByID = (ProductParams) => {
