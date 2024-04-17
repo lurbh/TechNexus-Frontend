@@ -476,6 +476,32 @@ body {
     background-color: #cc0000;
 }
 
+/* About Us */
+.about-us {
+    padding: 20px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.about-us-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about-us-subheader {
+    margin-top: 30px;
+}
+
+.about-us-body-p {
+    line-height: 1.6;
+}
+
+.about-us-body-list {
+    list-style-type:none;
+    padding-left: 20px;
+}
+
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     /* Navbar */

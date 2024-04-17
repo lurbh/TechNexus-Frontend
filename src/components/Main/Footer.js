@@ -18,8 +18,8 @@ export default function Footer()
                     <ul className="footer-links">
                         <li><a onClick={() => navigate("/")}>Home</a></li>
                         <li><a onClick={() => navigate("/products")}>Products</a></li>
-                        <li><a onClick={() => navigate("/")}>About</a></li>
-                        <li><a onClick={() => navigate("/")}>Contact</a></li>
+                        <li><a onClick={() => navigate("/about")}>About</a></li>
+                        <li><a onClick={() => navigate("/contactus")}>Contact</a></li>
                     </ul>
                 </div>
             </div>

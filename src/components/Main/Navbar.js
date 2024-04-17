@@ -28,8 +28,8 @@ export default function Navbar(props)
             </li>
             <li><a onClick={() => navigate("/")} className={`header-link ${props.currPage == "Categories"?"nav-selected":"" }`}>Categories</a></li>
             <li><a onClick={() => navigate("/")} className={`header-link ${props.currPage == "News"?"nav-selected":"" }`}>News</a></li>
-            <li><a onClick={() => navigate("/")} className={`header-link ${props.currPage == "About"?"nav-selected":"" }`}>About</a></li>
-            <li><a onClick={() => navigate("/")} className={`header-link ${props.currPage == "Contact Us"?"nav-selected":"" }`}>Contact Us</a></li>
+            <li><a onClick={() => navigate("/about")} className={`header-link ${props.currPage == "About"?"nav-selected":"" }`}>About</a></li>
+            <li><a onClick={() => navigate("/contactus")} className={`header-link ${props.currPage == "Contact Us"?"nav-selected":"" }`}>Contact Us</a></li>
           </ul>
           <ul className="header-nav-seprator"><b>|</b></ul>
           <ul className="header-userlist">
