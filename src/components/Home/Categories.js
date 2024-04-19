@@ -11,9 +11,9 @@ export default function Categories()
             <h2 className="categories-header">Categories</h2>
             <div className="card-category-holder">
                 {context.getCategories().map((cat) => {;
+                    console.log(cat);
                     return <CategoriesCard key={cat.category_id} item={cat}/>
                 })}
-                <CategoriesCard />
             </div>
         </section>
     )

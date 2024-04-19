@@ -44,7 +44,7 @@ export default function EditProductsForm(props)
                         <option>Select Product Category</option>
                         {
                             context.getCategories().map((cat) => {
-                                return <option value={cat.category_id} key={cat.category_id}>{cat.category_name}</option>
+                                return <option value={cat.category_id?cat.category_id:cat.id} key={cat.category_id?cat.category_id:cat.id}>{cat.category_name}</option>
                             })
                         }
                     </select>
@@ -56,7 +56,7 @@ export default function EditProductsForm(props)
                         <option>Select Product Brand</option>
                         {
                             context.getBrands().map((brand) => {
-                                return <option value={brand.brand_id} key={brand.brand_id}>{brand.brand_name}</option>
+                                return <option value={brand.brand_id?brand.brand_id:brand.id} key={brand.brand_id?brand.brand_id:brand.id}>{brand.brand_name}</option>
                             })
                         }
                     </select>
@@ -64,7 +64,7 @@ export default function EditProductsForm(props)
                 </div>
                 <div className="form-group">
                     <label className="form-label">Description</label>
-                    <textarea name="description" className="form-input" onChange={updateFormField} value={formState.description}/>
+                    <textarea name="description" className="form-input height-5" onChange={updateFormField} value={formState.description}/>
                 </div>
                 <div className="form-group">
                     <label className="form-label">Price</label>

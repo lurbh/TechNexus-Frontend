@@ -25,10 +25,10 @@ export default function Footer()
             </div>
             <div>
                 <label className="news-letter-header">Subscribe To Newsletter</label>
-                <form className="news-letter">
+                <div className="news-letter">
                     <input type="text" placeholder="Enter Email Here" className="input-field"/>
                     <button type="submit" className="submit-button"><i className="fa fa-envelope"/></button>
-                </form>
+                </div>
             </div>
         </footer>
     )

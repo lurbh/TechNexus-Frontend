@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const ProductContext = createContext();
 
-const BASE_API_URL = "https://7319-lurbh-technexusbackend-kpjjsas47oi.ws-us110.gitpod.io";
+const BASE_API_URL = "https://7319-lurbh-technexusbackend-kpjjsas47oi.ws-us110.gitpod.io"//"https://7319-lurbh-technexusbackend-kpjjsas47oi.ws-us110.gitpod.io"; //https://7319-lurbh-technexusbackend-fkikxvtooya.ws-us110.gitpod.io
 
 export default function ProductContextData(props) 
 {
@@ -66,10 +66,14 @@ export default function ProductContextData(props)
                 price: price,
                 quantity_available: quantity_available
             }
-            const cloneproducts = products.slice();
-            const indexToUpdate = cloneproducts.findIndex((p) => p.product_id===id)
-            cloneproducts.splice(indexToUpdate,1,updatedProduct);
-            setProducts(cloneproducts);
+            // const cloneproducts = products.slice();
+            // const indexToUpdate = cloneproducts.findIndex((p) => p.product_id===id)
+            // cloneproducts.splice(indexToUpdate,1,updatedProduct);
+            // setProducts(cloneproducts);
+            setProducts(prevState => {
+                const indexToUpdate = prevState.findIndex((p) => p.product_id===id);
+                prevState.splice(indexToUpdate,1,updatedProduct)
+            })
         }
     }
 
@@ -77,10 +81,14 @@ export default function ProductContextData(props)
         const response = await axios.delete(BASE_API_URL + `/products/${ProductID}`);
         if(response.status===200)
         {
-            const cloneproducts = products.slice();
-            const indexToUpdate = cloneproducts.findIndex((p) => p.product_id===ProductID)
-            cloneproducts.splice(indexToUpdate,1);
-            setProducts(cloneproducts);
+            setProducts(prevState => {
+                const indexToUpdate = prevState.findIndex((p) => p.product_id===ProductID);
+                prevState.splice(indexToUpdate,1)
+            })
+            // const cloneproducts = products.slice();
+            // const indexToUpdate = cloneproducts.findIndex((p) => p.product_id===ProductID)
+            // cloneproducts.splice(indexToUpdate,1);
+            // setProducts(cloneproducts);
         }
     }
 

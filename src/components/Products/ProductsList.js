@@ -12,7 +12,7 @@ export default function ProductsList()
             {context.products.length?
             <ul className="product-list">
                 {context.getProducts().map(product =>  (
-                    <ProductCard key={product.product_id} item={product} />
+                    <ProductCard key={product.product_id?product.product_id:product.id} item={product} />
                 ))}
             </ul>:<h4 className="loading">Loading ...</h4>}
         </div>

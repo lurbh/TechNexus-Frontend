@@ -17,6 +17,10 @@ body {
     padding: 3rem;
 }
 
+.height-5 {
+    height: 5rem;
+}
+
 /* Header Section */
 
 .header {
