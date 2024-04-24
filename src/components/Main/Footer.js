@@ -27,7 +27,7 @@ export default function Footer()
                 <label className="news-letter-header">Subscribe To Newsletter</label>
                 <div className="news-letter">
                     <input type="text" placeholder="Enter Email Here" className="input-field"/>
-                    <button type="submit" className="submit-button"><i className="fa fa-envelope"/></button>
+                    <button type="submit" className="submit-button"><i className="bi bi-envelope-fill"/></button>
                 </div>
             </div>
         </footer>

@@ -10,9 +10,8 @@ export default function Categories()
         <section className="categories-section">
             <h2 className="categories-header">Categories</h2>
             <div className="card-category-holder">
-                {context.getCategories().map((cat) => {;
-                    console.log(cat);
-                    return <CategoriesCard key={cat.category_id} item={cat}/>
+                {context.getCategories().map((cat) => {
+                    return <CategoriesCard key={cat.id} item={cat}/>
                 })}
             </div>
         </section>

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const ProductContext = createContext();
 
-const BASE_API_URL = "https://7319-lurbh-technexusbackend-kpjjsas47oi.ws-us110.gitpod.io"//"https://7319-lurbh-technexusbackend-kpjjsas47oi.ws-us110.gitpod.io"; //https://7319-lurbh-technexusbackend-fkikxvtooya.ws-us110.gitpod.io
+const BASE_API_URL = "https://7319-lurbh-technexusbackend-fkikxvtooya.ws-us110.gitpod.io/api"//process.env.REACT_APP_BASE_API_URL;
 
 export default function ProductContextData(props) 
 {
@@ -14,11 +14,11 @@ export default function ProductContextData(props)
     useEffect(() => {
 
         const fetchData = async () => {
-            const responseproducts = await axios.get(BASE_API_URL + "/products");
+            const responseproducts = await axios.get(BASE_API_URL + "/product");
             setProducts(responseproducts.data.products)
-            const responsecategories = await axios.get(BASE_API_URL + "/products/allcategories");
+            const responsecategories = await axios.get(BASE_API_URL + "/product/allcategories");
             setCategories(responsecategories.data.categories)
-            const responsebrands = await axios.get(BASE_API_URL + "/products/brands");
+            const responsebrands = await axios.get(BASE_API_URL + "/product/brands");
             setBrands(responsebrands.data.brands)
         }
 
