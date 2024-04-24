@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from "../../context/UserContext";
 
 export default function RegisterForm()
 {
@@ -16,6 +18,9 @@ export default function RegisterForm()
             [e.target.name] : e.target.value
         })
     }
+
+    let navigate = useNavigate();
+    const context = useContext(UserContext);
 
     return (
         <section className="login-section">
@@ -44,7 +49,7 @@ export default function RegisterForm()
                                 <label className="login-input-label">Password:</label>
                             </td>
                             <td className="login-table-input">
-                                <input type="text" name="password" className="login-input" value={formState.password} onChange={updateFormField}/>
+                                <input type="password" name="password" className="login-input" value={formState.password} onChange={updateFormField}/>
                             </td>
                         </tr>
                         <tr className="login-input-section">
@@ -52,9 +57,10 @@ export default function RegisterForm()
                                 <label className="login-input-label">Confirm Password:</label>
                             </td>
                             <td className="login-table-input">
-                                <input type="text" name="confirm_password" className="login-input" value={formState.confirm_password} onChange={updateFormField}/>
+                                <input type="password" name="confirm_password" className="login-input" value={formState.confirm_password} onChange={updateFormField}/>
                             </td>
                         </tr>
+                        <input type="hidden" name="role_id" className="login-input" value={formState.role_id} onChange={updateFormField}/>
                     </tbody>
                 </table>
                 <button className="login-form-btn" onClick={()=> {

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm()
 {
@@ -13,6 +15,9 @@ export default function LoginForm()
             [e.target.name] : e.target.value
         })
     }
+
+    let navigate = useNavigate();
+    const context = useContext(UserContext);
 
     return (
         <section className="login-section">
@@ -33,12 +38,18 @@ export default function LoginForm()
                                 <label className="login-input-label">Password:</label>
                             </td>
                             <td className="login-table-input">
-                                <input type="text" name="password" className="login-input" value={formState.password} onChange={updateFormField}/>
+                                <input type="password" name="password" className="login-input" value={formState.password} onChange={updateFormField}/>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button className="login-form-btn" onClick={()=> {
+                <button className="login-form-btn" onClick={async ()=> {
+                    const result = await context.login(
+                        formState.email,
+                        formState.password,
+                    )
+                    if(result)
+                        navigate("/")
                 }}>Login</button>
             </div>
         </section>

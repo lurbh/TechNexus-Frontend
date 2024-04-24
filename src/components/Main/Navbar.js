@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/TechNexus-Logo.png"
 import '../../assets/style.css'
+import { UserContext } from "../../context/UserContext";
 
 export default function Navbar(props) 
 {
   let navigate = useNavigate();
+  const context = useContext(UserContext);
 
   return (
     <header className="header">
@@ -32,11 +34,18 @@ export default function Navbar(props)
             <li><a onClick={() => navigate("/contactus")} className={`header-link ${props.currPage == "Contact Us"?"nav-selected":"" }`}>Contact Us</a></li>
           </ul>
           <ul className="header-nav-seprator"><b>|</b></ul>
-          <ul className="header-userlist">
+          {
+            context.checkLogin() ? <ul className="header-userlist">
+            <li><a onClick={() => navigate("/login")} className={`header-link ${props.currPage == "Login"?"nav-selected":"" }`}>Hi, {context.getUsername()}</a></li>
+            <li><a onClick={() => navigate("/register")} className={`header-link ${props.currPage == "Register"?"nav-selected":"" }`}>Sign Out</a></li>
+            <li><a onClick={() => navigate("/")} className={`header-link ${props.currPage == "Cart"?"nav-selected":"" }`}><i className="bi bi-cart"></i></a></li>
+          </ul> : <ul className="header-userlist">
             <li><a onClick={() => navigate("/login")} className={`header-link ${props.currPage == "Login"?"nav-selected":"" }`}>Login</a></li>
             <li><a onClick={() => navigate("/register")} className={`header-link ${props.currPage == "Register"?"nav-selected":"" }`}>Register</a></li>
             <li><a onClick={() => navigate("/")} className={`header-link ${props.currPage == "Cart"?"nav-selected":"" }`}><i className="bi bi-cart"></i></a></li>
           </ul>
+          }
+          
         </div>
     </header>
   )
