@@ -3,8 +3,6 @@ import APIHandler from '../api/api';
 
 export const ProductContext = createContext();
 
-const BASE_API_URL = "https://7319-lurbh-technexusbackend-fkikxvtooya.ws-us110.gitpod.io/api"//process.env.REACT_APP_BASE_API_URL;
-
 export default function ProductContextData(props) 
 {
     const [products, setProducts] = useState([])

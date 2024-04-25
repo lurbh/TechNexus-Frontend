@@ -3,13 +3,12 @@ import APIHandler, { setAuthHeader, clearAuthHeader } from '../api/api';
 
 export const UserContext = createContext();
 
-const BASE_API_URL = "https://7319-lurbh-technexusbackend-fkikxvtooya.ws-us110.gitpod.io/api"//process.env.REACT_APP_BASE_API_URL;
-
 export default function UserContextData(props) {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [role, setRole] = useState(0);
     const [accessToken, setAccessToken] = useState("");
+    const [refreshToken, setRefreshToken] = useState("");
     const [loginState, setLoginState] = useState(false);
 
 
@@ -19,11 +18,14 @@ export default function UserContextData(props) {
                 let defaultUserName = localStorage.getItem("username")? localStorage.getItem("username") : '';
                 let defaultemail = localStorage.getItem("email")? localStorage.getItem("email") : '';
                 let accessToken = localStorage.getItem("accessToken")? localStorage.getItem("accessToken") : '';
+                let refreshToken = localStorage.getItem("refreshToken")? localStorage.getItem("refreshToken") : '';
                 let defaultrole = localStorage.getItem("role")? localStorage.getItem("role") : 0;
                 setUsername(defaultUserName);
                 setEmail(defaultemail)
                 setAccessToken(accessToken);
+                setRefreshToken(refreshToken);
                 setRole(defaultrole)
+                setAuthHeader(accessToken,refreshToken)
                 if(defaultUserName)
                     setLoginState(true)
             } catch (error) {
@@ -119,10 +121,12 @@ export default function UserContextData(props) {
         login : login,
         register : register,
         logout : logout,
+        refresh: refresh,
         checkLogin : () => {return loginState;}, 
         getUsername : () => {return username},
         getRole : () => {return role},
         getAccessToken : () => {return accessToken},
+        getrefreshToken : () => {return refreshToken},
         getEmail : () => {return email}
     }
 
