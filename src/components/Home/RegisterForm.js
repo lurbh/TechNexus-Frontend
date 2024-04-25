@@ -60,10 +60,19 @@ export default function RegisterForm()
                                 <input type="password" name="confirm_password" className="login-input" value={formState.confirm_password} onChange={updateFormField}/>
                             </td>
                         </tr>
-                        <input type="hidden" name="role_id" className="login-input" value={formState.role_id} onChange={updateFormField}/>
                     </tbody>
                 </table>
-                <button className="login-form-btn" onClick={()=> {
+                <input type="hidden" name="role_id" className="login-input" value={formState.role_id} onChange={updateFormField}/>
+                <button className="login-form-btn" onClick={async ()=> {
+                    const result = await context.register(
+                        formState.email,
+                        formState.username,
+                        formState.password,
+                        formState.confirm_password,
+                        formState.role_id
+                    )
+                    if(result)
+                        navigate("/login")
                 }}>Register</button>
             </div>
         </section>

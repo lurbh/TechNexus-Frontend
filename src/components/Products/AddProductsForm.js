@@ -36,7 +36,7 @@ export default function AddProductsForm()
                         <option>Select Product Category</option>
                         {
                             context.getCategories().map((cat) => {
-                                return <option value={cat.category_id} key={cat.category_id}>{cat.category_name}</option>
+                                return <option value={cat.id} key={cat.category_id}>{cat.category_name}</option>
                             })
                         }
                     </select>
@@ -48,7 +48,7 @@ export default function AddProductsForm()
                         <option>Select Product Brand</option>
                         {
                             context.getBrands().map((brand) => {
-                                return <option value={brand.brand_id} key={brand.brand_id}>{brand.brand_name}</option>
+                                return <option value={brand.id} key={brand.brand_id}>{brand.brand_name}</option>
                             })
                         }
                     </select>
@@ -72,7 +72,7 @@ export default function AddProductsForm()
                         formState.category_id,
                         formState.brand_id,
                         formState.description,
-                        formState.price,
+                        parseFloat(formState.price),
                         formState.quantity_available
                     )
                     navigate("/products")

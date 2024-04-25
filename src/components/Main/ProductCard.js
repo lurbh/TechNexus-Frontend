@@ -12,8 +12,8 @@ export default function ProductCard(props){
                 <h3 className="card-product-price">Price : {props.item?props.item.price:"Price"} - Qty Left : ( {props.item?props.item.quantity_available:"quantity_available"} )</h3>
                 <h5 className="card-product-description">{props.item?props.item.description:"Description"}</h5>
                 <div className="card-product-buttons">
-                    <button className="btn-edit" onClick={(e) => {navigate(`/products/edit/${props.item.product_id?props.item.product_id:props.item.id}`)}}>Edit</button>
-                    <button className="btn-delete" onClick={(e) => {navigate(`/products/delete/${props.item.product_id?props.item.product_id:props.item.id}`)}}>Delete</button>
+                    <button className="btn-edit" onClick={(e) => {navigate(`/products/edit/${props.item.id}`)}}>Edit</button>
+                    <button className="btn-delete" onClick={(e) => {navigate(`/products/delete/${props.item.id}`)}}>Delete</button>
                 </div>
             </div>
         </div>

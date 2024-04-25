@@ -36,8 +36,8 @@ export default function Navbar(props)
           <ul className="header-nav-seprator"><b>|</b></ul>
           {
             context.checkLogin() ? <ul className="header-userlist">
-            <li><a onClick={() => navigate("/login")} className={`header-link ${props.currPage == "Login"?"nav-selected":"" }`}>Hi, {context.getUsername()}</a></li>
-            <li><a onClick={() => navigate("/register")} className={`header-link ${props.currPage == "Register"?"nav-selected":"" }`}>Sign Out</a></li>
+            <li><a onClick={() => navigate("/account")} className={`header-link ${props.currPage == "Account"?"nav-selected":"" }`}>Hi, {context.getUsername()}</a></li>
+            <li><a onClick={() => context.logout()} className={`header-link ${props.currPage == "Logout"?"nav-selected":"" }`}>Sign Out</a></li>
             <li><a onClick={() => navigate("/")} className={`header-link ${props.currPage == "Cart"?"nav-selected":"" }`}><i className="bi bi-cart"></i></a></li>
           </ul> : <ul className="header-userlist">
             <li><a onClick={() => navigate("/login")} className={`header-link ${props.currPage == "Login"?"nav-selected":"" }`}>Login</a></li>

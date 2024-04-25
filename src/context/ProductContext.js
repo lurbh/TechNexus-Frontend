@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import APIHandler from '../api/api';
 
 export const ProductContext = createContext();
 
@@ -14,11 +14,11 @@ export default function ProductContextData(props)
     useEffect(() => {
 
         const fetchData = async () => {
-            const responseproducts = await axios.get(BASE_API_URL + "/product");
+            const responseproducts = await APIHandler.get("/products");
             setProducts(responseproducts.data.products)
-            const responsecategories = await axios.get(BASE_API_URL + "/product/allcategories");
+            const responsecategories = await APIHandler.get("/products/allcategories");
             setCategories(responsecategories.data.categories)
-            const responsebrands = await axios.get(BASE_API_URL + "/product/brands");
+            const responsebrands = await APIHandler.get("/products/brands");
             setBrands(responsebrands.data.brands)
         }
 
@@ -26,7 +26,7 @@ export default function ProductContextData(props)
     },[])
 
     const addProduct = async (product_name,category_id,brand_id,description,price,quantity_available) => {
-        const response = await axios.post(BASE_API_URL + "/products/", {
+        const response = await APIHandler.post("/products/", {
             product_name : product_name,
             category_id : category_id,
             brand_id: brand_id,
@@ -34,9 +34,9 @@ export default function ProductContextData(props)
             price: price,
             quantity_available : quantity_available
         });
-        let id = response.data.message[0].insertId;
+        let id = response.data.message.id;
         setProducts([...products,{
-            product_id: id,
+            id: id,
             product_name: product_name,
             category_id: category_id,
             brand_id: brand_id,
@@ -47,7 +47,7 @@ export default function ProductContextData(props)
     }
 
     const updateProduct = async (id,product_name,category_id,brand_id,description,price,quantity_available) => {
-        const response = await axios.put(BASE_API_URL + `/products/${id}`, {
+        const response = await  APIHandler.put(`/products/${id}`, {
             product_name : product_name,
             category_id : category_id,
             brand_id: brand_id,
@@ -58,7 +58,7 @@ export default function ProductContextData(props)
         if(response.status === 202)
         {
             const updatedProduct = {
-                product_id: id,
+                id: id,
                 product_name: product_name,
                 category_id: category_id,
                 brand_id: brand_id,
@@ -67,33 +67,33 @@ export default function ProductContextData(props)
                 quantity_available: quantity_available
             }
             // const cloneproducts = products.slice();
-            // const indexToUpdate = cloneproducts.findIndex((p) => p.product_id===id)
+            // const indexToUpdate = cloneproducts.findIndex((p) => p.id===id)
             // cloneproducts.splice(indexToUpdate,1,updatedProduct);
             // setProducts(cloneproducts);
             setProducts(prevState => {
-                const indexToUpdate = prevState.findIndex((p) => p.product_id===id);
+                const indexToUpdate = prevState.findIndex((p) => p.id===id);
                 prevState.splice(indexToUpdate,1,updatedProduct)
             })
         }
     }
 
     const deleteProduct = async (ProductID) => {
-        const response = await axios.delete(BASE_API_URL + `/products/${ProductID}`);
+        const response = await  APIHandler.delete(`/products/${ProductID}`);
         if(response.status===200)
         {
             setProducts(prevState => {
-                const indexToUpdate = prevState.findIndex((p) => p.product_id===ProductID);
+                const indexToUpdate = prevState.findIndex((p) => p.id===ProductID);
                 prevState.splice(indexToUpdate,1)
             })
             // const cloneproducts = products.slice();
-            // const indexToUpdate = cloneproducts.findIndex((p) => p.product_id===ProductID)
+            // const indexToUpdate = cloneproducts.findIndex((p) => p.id===ProductID)
             // cloneproducts.splice(indexToUpdate,1);
             // setProducts(cloneproducts);
         }
     }
 
     const getProductByID = (ProductParams) => {
-        const foundProduct = products.filter((p) => p.product_id === parseInt(ProductParams)) 
+        const foundProduct = products.filter((p) => p.id === parseInt(ProductParams)) 
         return foundProduct;
     }
 

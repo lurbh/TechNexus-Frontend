@@ -575,13 +575,76 @@ body {
 }
 
 .login-form-btn:hover {
-    background-color: #0056b3;
+    background-color: #6c3a9b;
 }
 
 
-.login-form-btn:hover {
-    background-color: #0056b3;
+/* Error Message */
+.error-message {
+    width: 100%;
+    padding: 10px;
+    background-color: #f44336; /* Red color for error messages */
+    color: #fff; /* White text color */
+    text-align: center; /* Center-align the text */
+    position: fixed; /* Fixed position */
+    top: 60px; /* Distance from the top */
+    left: 0; /* Align to the left */
+    z-index: 9999; /* Ensure it appears above other elements */
 }
+
+/* Contact Form */
+.contact-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #551a8b; 
+    color: azure; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #6c3a9b;
+  }
+  
 
 /* Mobile Styles */
 @media (max-width: 768px) {
