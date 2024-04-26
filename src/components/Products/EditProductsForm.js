@@ -19,7 +19,11 @@ export default function EditProductsForm(props)
         const fetchProducts = () => {
             let tempProduct = context.getProductByID(props.productID);
             if(tempProduct.length)
+            {
+                console.log(tempProduct);
                 setFormState(...tempProduct);
+                setImage_url(tempProduct[0].image_url)
+            }
         }
         fetchProducts()
     }, [context, props.productID])
@@ -105,7 +109,7 @@ export default function EditProductsForm(props)
                                 <label className="product-input-label">Image:</label>
                             </td>
                             <td className="product-table-input">
-                                <UploadImage folder="Products" setImage_url={setImage_url}/>
+                                <UploadImage folder="Products" setImage_url={setImage_url} img={image_url}/>
                             </td>
                         </tr>
                     </tbody>

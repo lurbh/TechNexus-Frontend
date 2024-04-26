@@ -4,7 +4,7 @@ import env from "react-dotenv";
 
 
 export default function UploadImage(props){
-    const [img_url, setImg_Url] = useState("");
+    const [img_url, setImg_Url] = useState(props.img);
     const [cloudName] = useState(useRef(env.CLOUDINARY_NAME));
     const [uploadPreset] = useState(useRef(env.CLOUDINARY_UPLOAD_PRESET));
 
