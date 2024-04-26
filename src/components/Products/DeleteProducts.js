@@ -21,7 +21,7 @@ export default function DeleteProduct(props)
                 setProduct(...tempProduct);
         }
         fetchProducts()
-    }, [context.products.length])
+    }, [context, props.productID])
 
 
     return (

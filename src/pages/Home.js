@@ -4,7 +4,6 @@ import Hero from "../components/Home/Hero";
 import Footer from "../components/Main/Footer";
 import Categories from "../components/Home/Categories";
 import ProductContextData from "../context/ProductContext";
-import ErrorMessage from "../components/Main/ErrorMessage";
 
 export default function Home() 
 {

@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
 import CloudinaryUploadWidget from "../../context/CloudinaryContext";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 import env from "react-dotenv";
 
 
@@ -16,22 +14,12 @@ export default function UploadImage(props){
         folder: props.folder,
         multiple: false,
     })
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName
-        }
-    });
 
     return (
         <div className="image-upload">
             <CloudinaryUploadWidget uwConfig={uwConfig} setImg_Url={setImg_Url} setImage_url={props.setImage_url}/>
             <div style={{ width: "300px" }}>
                 {img_url?<img src={img_url} alt="Product Card" className="card-image-upload"/>:<></>}
-                {/* <AdvancedImage
-                style={{ maxWidth: "100%" }}
-                cldImg={myImage}
-                plugins={[responsive(), placeholder()]} 
-                />*/}
             </div>
         </div>
     )

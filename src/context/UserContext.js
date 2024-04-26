@@ -36,14 +36,12 @@ export default function UserContextData(props) {
             }
         }
 
-        const clearLocalStorage = () => {
+        const timeoutId = setTimeout(() => {
             localStorage.clear();
-          };
-      
-          const clearAfterTime = setTimeout(clearLocalStorage, 60000); // Clear after 1 minute (60000 milliseconds)
-      
-          return () => clearTimeout(clearAfterTime); // Cleanup function to clear timeout when component unmounts
+        }, 180 * 60 * 1000); 
+
         retrieveData();
+        return () => clearTimeout(timeoutId);
     }, [])
 
     const register = async (email,username,password,confirm_password,role_id) => {
@@ -54,7 +52,7 @@ export default function UserContextData(props) {
             confirm_password: confirm_password,
             role_id: role_id
         });
-        if (response.status == 201)
+        if (response.status === 201)
             return true;
         else 
             return false;
@@ -66,7 +64,7 @@ export default function UserContextData(props) {
                 email : email,
                 password : password
             });
-            if(response.status == 200)
+            if(response.status === 200)
             {
                 setAccessToken(response.data.accessToken)
                 setRefreshToken(response.data.refreshToken)
@@ -110,7 +108,7 @@ export default function UserContextData(props) {
             const response = await  APIHandler.post("/user/logout", {
                 refreshToken : localStorage.getItem("refreshToken")
             });
-            if(response.status == 200)
+            if(response.status === 200)
             {
                 setAccessToken("")
                 setRefreshToken("")
