@@ -27,11 +27,22 @@ export default function UserContextData(props) {
                 setRole(defaultrole)
                 setAuthHeader(accessToken,refreshToken)
                 if(defaultUserName)
+                {
                     setLoginState(true)
+                    refresh();
+                }
             } catch (error) {
                 console.error('Error in username and id retrieval and token', error)
             }
         }
+
+        const clearLocalStorage = () => {
+            localStorage.clear();
+          };
+      
+          const clearAfterTime = setTimeout(clearLocalStorage, 60000); // Clear after 1 minute (60000 milliseconds)
+      
+          return () => clearTimeout(clearAfterTime); // Cleanup function to clear timeout when component unmounts
         retrieveData();
     }, [])
 
@@ -58,6 +69,7 @@ export default function UserContextData(props) {
             if(response.status == 200)
             {
                 setAccessToken(response.data.accessToken)
+                setRefreshToken(response.data.refreshToken)
                 setEmail(response.data.user.email)
                 setUsername(response.data.user.username);
                 setRole(response.data.user.role_id)
@@ -86,6 +98,7 @@ export default function UserContextData(props) {
             const response = await  APIHandler.post("/user/refresh", {
                 refreshToken : localStorage.getItem("refreshToken")
             })
+            setAuthHeader(response.data, localStorage.getItem("refreshToken"))
         } catch (error) {
             console.log("Error", error);
             return false;
@@ -100,11 +113,13 @@ export default function UserContextData(props) {
             if(response.status == 200)
             {
                 setAccessToken("")
+                setRefreshToken("")
                 setEmail("")
                 setUsername("");
                 setRole(0)
                 setLoginState(false);
                 clearAuthHeader();
+                localStorage.clear();
                 return true;
             }
             else

@@ -1,13 +1,17 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import APIHandler from '../api/api';
+import { UserContext } from "./UserContext";
 
 export const ProductContext = createContext();
 
 export default function ProductContextData(props) 
 {
+    const userContext = useContext(UserContext);
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
     const [brands, setBrands] = useState([])
+    
+
 
     useEffect(() => {
 
@@ -23,35 +27,47 @@ export default function ProductContextData(props)
         fetchData()
     },[])
 
-    const addProduct = async (product_name,category_id,brand_id,description,price,quantity_available) => {
-        const response = await APIHandler.post("/products/", {
-            product_name : product_name,
-            category_id : category_id,
-            brand_id: brand_id,
-            description: description,
-            price: price,
-            quantity_available : quantity_available
-        });
-        let id = response.data.message.id;
-        setProducts([...products,{
-            id: id,
-            product_name: product_name,
-            category_id: category_id,
-            brand_id: brand_id,
-            description: description,
-            price: price,
-            quantity_available: quantity_available
-        }])
+    const addProduct = async (product_name,category_id,brand_id,description,price,quantity_available,image_url) => {
+        try {
+            const response = await APIHandler.post("/products/", {
+                product_name : product_name,
+                category_id : category_id,
+                brand_id: brand_id,
+                description: description,
+                price: price,
+                quantity_available : quantity_available,
+                image_url: image_url
+            });
+            if(response.status===201)
+            {
+                let id = response.data.message.id;
+                setProducts([...products,{
+                    id: id,
+                    product_name: product_name,
+                    category_id: category_id,
+                    brand_id: brand_id,
+                    description: description,
+                    price: price,
+                    quantity_available: quantity_available,
+                    image_url: image_url
+                }])
+            }
+        } catch (error) {
+            console.log(error);
+            userContext.refresh();
+            addProduct(product_name,category_id,brand_id,description,price,quantity_available,image_url);
+        }
     }
 
-    const updateProduct = async (id,product_name,category_id,brand_id,description,price,quantity_available) => {
+    const updateProduct = async (id,product_name,category_id,brand_id,description,price,quantity_available,image_url) => {
         const response = await  APIHandler.put(`/products/${id}`, {
             product_name : product_name,
             category_id : category_id,
             brand_id: brand_id,
             description: description,
             price: price,
-            quantity_available : quantity_available
+            quantity_available : quantity_available,
+            image_url: image_url
         });
         if(response.status === 202)
         {
@@ -62,7 +78,8 @@ export default function ProductContextData(props)
                 brand_id: brand_id,
                 description: description,
                 price: price,
-                quantity_available: quantity_available
+                quantity_available: quantity_available,
+                image_url: image_url
             }
             // const cloneproducts = products.slice();
             // const indexToUpdate = cloneproducts.findIndex((p) => p.id===id)
@@ -72,6 +89,10 @@ export default function ProductContextData(props)
                 const indexToUpdate = prevState.findIndex((p) => p.id===id);
                 prevState.splice(indexToUpdate,1,updatedProduct)
             })
+        }
+        else if(response.status === 498)
+        {
+            userContext.refresh();
         }
     }
 
@@ -87,6 +108,10 @@ export default function ProductContextData(props)
             // const indexToUpdate = cloneproducts.findIndex((p) => p.id===ProductID)
             // cloneproducts.splice(indexToUpdate,1);
             // setProducts(cloneproducts);
+        }
+        else if(response.status === 498)
+        {
+            userContext.refresh();
         }
     }
 

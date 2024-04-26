@@ -127,7 +127,8 @@ body {
 }
 
 .header-nav-seprator {
-    padding-inline-start: 0px
+    padding-inline-start: 0px;
+    display: block;
 }
 
 .nav-selected {
@@ -139,7 +140,16 @@ body {
 }
 
 .menu-btn {
+    background-color: #333333;
+    color: azure;
     display: none;
+    border: 1px;
+    border: none;
+    border-radius: 5px;
+}
+
+.close-nav {
+    display: none!important;
 }
 
 /* Hero Section */
@@ -194,6 +204,7 @@ body {
     border-radius: 5px;
     overflow: hidden; 
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 25px;
   }
   
   .card-category-image {
@@ -301,48 +312,85 @@ body {
     /* width: 80%;
     margin-bottom: 20px;
     margin-left: 3rem; */
+    /* display: grid;
+    place-items: center;
+    margin-bottom: 15px; */
+    width: 80%; 
+    margin: 0 auto;
     display: grid;
     place-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 }
 
-.form-group {
-    /* margin-bottom: 15px;
-    justify-content: center;
-    text-align: left; */
-    width: 100%; 
-    margin-bottom: 15px;
+.product-form-table {
+    width: 100%;
 }
 
-.form-label{
-    font-weight: bold;
-    text-align: left;
+.product-form-table tr{
+    height: 50px;
+    text-align: justify;
 }
 
-.form-input {
-    margin-left: 1rem;
-    width: 60%; 
-    padding: 8px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box;
-    justify-content: center;
+.product-input-section {
+    margin-bottom: 10px;
+}
+
+.product-table-input {
+    width: 70%;
+}
+
+.product-table-input {
+    width: 70%;
+}
+
+.product-input {
+    width: 550px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     font-family: "Roboto Condensed", sans-serif;
 }
 
-.form-btn {
+select.product-input {
+    width: 567px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.product-input-label {
+    display: inline-block;
+    text-align: left;
+    padding-right: 10px;
+    margin-bottom: 5px;
+}
+
+.cloudinary-button {
+    background-color: #551a8b!important;
+    color: azure!important;
+    border: none!important;
+    border-radius: 4px!important;
+    font-size: 12px!important;
+    cursor: pointer!important;
+    padding: 5px 10px!important;
+}
+
+.product-form-btn {
     width: 30%;
     padding: 10px 20px; 
+    margin-top: 25px;
     background-color: #551a8b; 
     color: azure; 
     border: none; 
     border-radius: 4px; 
     cursor: pointer; 
     justify-content: center;
+    transition: background-color 0.3s ease;
 }
 
-.form-btn:hover {
-    background-color: #0056b3; 
+.product-form-btn:hover {
+    background-color: #6c3a9b;
 }
 
 .card-product {
@@ -359,6 +407,22 @@ body {
 
 .card-product:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.image-upload {
+    display: inline-flex;
+    flex-direction: row;
+    justify-items: start;
+    align-items: center;
+}
+
+.card-image-upload {
+    width: 100px; 
+    height: 100px; 
+    margin-right: 20px; 
+    border-radius: 4px; 
+    object-fit: cover; 
+    margin-left: 20px;
 }
 
 .card-product-image {
@@ -600,38 +664,38 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-  }
-  
-  .contact-form-container h2 {
+}
+
+.contact-form-container h2 {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .form-group {
+    }
+
+.form-group-contact {
     margin-bottom: 20px;
-  }
-  
-  .form-group label {
+}
+
+.form-group-contact label {
     display: block;
     font-weight: bold;
-  }
-  
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group textarea {
+}
+
+.form-group-contact input[type="text"],
+.form-group-contact input[type="email"],
+.form-group-contact textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
     font-family: "Roboto Condensed", sans-serif;
-  }
-  
-  .form-group textarea {
+}
+
+.form-group-contact textarea {
     resize: vertical;
-  }
-  
-  button {
+}
+
+.contact-button {
     width: 100%;
     padding: 10px;
     background-color: #551a8b; 
@@ -639,11 +703,11 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #6c3a9b;
-  }
+}
+
+.contact-button:hover {
+background-color: #6c3a9b;
+}
   
 
 /* Mobile Styles */
@@ -672,10 +736,9 @@ body {
 
     .header-links {
         position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
+        top: 0;
+        right: 0;
+        background-color: #333;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         display: none;
@@ -705,7 +768,6 @@ body {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #fff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         padding: 10px;
     }
@@ -720,8 +782,22 @@ body {
 
     .header-userlist {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-nav-seprator{
+        display: none;
+    }
+    
+    .header-links:hover {
+        display: flex;
+    }
+
+    .close-nav {
+        display: block!important;
     }
 
     /* Footer */
@@ -783,5 +859,14 @@ body {
 
     .login-input-label {
         width: 100px; 
+    }
+
+    /* Products */
+    .product-input {
+        width: 250px;
+    }
+    
+    select.product-input {
+        width: 267px;
     }
 }

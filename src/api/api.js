@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-export let BASE_API_URL = "https://7319-lurbh-technexusbackend-fkikxvtooya.ws-us110.gitpod.io/api";
+
+export let BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
 const APIHandler = axios.create({
     "baseURL": BASE_API_URL
