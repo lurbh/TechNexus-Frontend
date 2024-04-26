@@ -543,6 +543,58 @@ select.product-input {
     background-color: #cc0000;
 }
 
+.smcard-product {
+    display: flex;
+    flex-direction: column; /* Make the card stack elements vertically */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px; /* Adjust as needed */
+    margin-bottom: 20px; /* Adjust spacing between cards */
+  }
+  
+  .smcard-product-image {
+    width: 100%; /* Make the image fill the width of the card */
+    height: auto;
+  }
+  
+  .smcard-product-content {
+    padding: 10px;
+  }
+  
+  .smcard-product-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .smcard-product-price {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .smcard-product-description {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .smcard-product-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .btn-edit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-edit:hover {
+    background-color: #0056b3;
+  }
+
 /* About Us */
 .about-us {
     padding: 20px;

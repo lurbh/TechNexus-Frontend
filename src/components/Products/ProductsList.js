@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
+import ProductCardSeller from "../Main/ProductCardSeller";
 import ProductCard from "../Main/ProductCard";
 
 export default function ProductsList()
@@ -13,6 +14,13 @@ export default function ProductsList()
             <ul className="product-list">
                 {context.getProducts().map(product =>  (
                     <ProductCard key={product.id} item={product} />
+                ))}
+            </ul>:<h4 className="loading">Loading ...</h4>}
+            <h2 className="product-list-header">Product List</h2>
+            {context.products.length?
+            <ul className="product-list">
+                {context.getProducts().map(product =>  (
+                    <ProductCardSeller key={product.id} item={product} />
                 ))}
             </ul>:<h4 className="loading">Loading ...</h4>}
         </div>

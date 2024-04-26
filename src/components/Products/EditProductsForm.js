@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ProductContext } from "../../context/ProductContext";
+import UploadImage from "../Main/UploadImage";
 
 export default function EditProductsForm(props)
 {
@@ -29,52 +30,87 @@ export default function EditProductsForm(props)
             [e.target.name] : e.target.value
         })
     }
+    const [image_url,setImage_url] = useState("")
 
     return (
         <div className="centre">
             <h2>Edit Product</h2>
             <div className="product-form">
-                <div className="form-group">
-                    <label className="form-label">Product Name</label>
-                    <input type="text" name="product_name" className="form-input" onChange={updateFormField} value={formState.product_name}/>
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Category</label>
-                    <select className="form-input"  name="category_id" aria-label="Select Product Category" onChange={updateFormField} value={formState.category_id}>
-                        <option>Select Product Category</option>
-                        {
-                            context.getCategories().map((cat) => {
-                                return <option value={cat.category_id?cat.category_id:cat.id} key={cat.category_id?cat.category_id:cat.id}>{cat.category_name}</option>
-                            })
-                        }
-                    </select>
-                    {/* <input type="text" name="category_id" className="form-input" onChange={updateFormField} value={formState.category_id}/> */}
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Brand</label>
-                    <select className="form-input"  name="brand_id" aria-label="Select Product Brand" onChange={updateFormField} value={formState.brand_id}>
-                        <option>Select Product Brand</option>
-                        {
-                            context.getBrands().map((brand) => {
-                                return <option value={brand.brand_id?brand.brand_id:brand.id} key={brand.brand_id?brand.brand_id:brand.id}>{brand.brand_name}</option>
-                            })
-                        }
-                    </select>
-                    {/* <input type="text" name="brand_id" className="form-input" onChange={updateFormField} value={formState.brand_id}/> */}
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Description</label>
-                    <textarea name="description" className="form-input height-5" onChange={updateFormField} value={formState.description}/>
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Price</label>
-                    <input type="number" name="price" className="form-input" onChange={updateFormField} value={formState.price}/>
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Quantity Available</label>
-                    <input type="number" name="quantity_available" className="form-input" onChange={updateFormField} value={formState.quantity_available}/>
-                </div>
-                <button className="form-btn" onClick={()=> {
+            <table border={0} className="product-form-table">
+                    <tbody>
+                        <tr className="product-input-section">
+                            <td className="product-input-table-label">
+                                <label className="product-input-label">Product Name:</label>
+                            </td>
+                            <td className="product-table-input">
+                                <input type="text" name="product_name" className="product-input" onChange={updateFormField} value={formState.product_name}/>
+                            </td>
+                        </tr>
+                        <tr className="product-input-section">
+                            <td className="product-input-table-label">
+                                <label className="product-input-label">Category:</label>
+                            </td>
+                            <td className="product-table-input">
+                                <select className="product-input"  name="category_id" aria-label="Select Product Category" onChange={updateFormField} value={formState.category_id}>
+                                    <option>Select Product Category</option>
+                                    {
+                                        context.getCategories().map((cat) => {
+                                            return <option value={cat.id} key={cat.id}>{cat.category_name}</option>
+                                        })
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr className="product-input-section">
+                            <td className="product-input-table-label">
+                                <label className="product-input-label">Brand:</label>
+                            </td>
+                            <td className="product-table-input">
+                                <select className="product-input"  name="brand_id" aria-label="Select Product Brand" onChange={updateFormField} value={formState.brand_id}>
+                                    <option>Select Product Brand</option>
+                                    {
+                                        context.getBrands().map((brand) => {
+                                            return <option value={brand.id} key={brand.id}>{brand.brand_name}</option>
+                                        })
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr className="product-input-section">
+                            <td className="product-input-table-label">
+                                <label className="product-input-label">Description:</label>
+                            </td>
+                            <td className="product-table-input">
+                                <textarea name="description" className="product-input" rows="5" onChange={updateFormField} value={formState.description}/>
+                            </td>
+                        </tr>
+                        <tr className="product-input-section">
+                            <td className="product-input-table-label">
+                                <label className="product-input-label">Price:</label>
+                            </td>
+                            <td className="product-table-input">
+                            <input type="text" name="price" className="product-input" onChange={updateFormField} value={formState.price}/>
+                            </td>
+                        </tr>
+                        <tr className="product-input-section">
+                            <td className="product-input-table-label">
+                                <label className="product-input-label">Quantity Available:</label>
+                            </td>
+                            <td className="product-table-input">
+                            <input type="text" name="quantity_available" className="product-input" onChange={updateFormField} value={formState.quantity_available}/>
+                            </td>
+                        </tr>
+                        <tr className="product-input-section">
+                            <td className="product-input-table-label">
+                                <label className="product-input-label">Image:</label>
+                            </td>
+                            <td className="product-table-input">
+                                <UploadImage folder="Products" setImage_url={setImage_url}/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button className="product-form-btn" onClick={()=> {
                     context.updateProduct(
                         props.productID,
                         formState.product_name,
@@ -82,7 +118,8 @@ export default function EditProductsForm(props)
                         formState.brand_id,
                         formState.description,
                         formState.price,
-                        formState.quantity_available
+                        formState.quantity_available,
+                        image_url
                     )
                     navigate("/products")
                 }}>Edit Product</button>
