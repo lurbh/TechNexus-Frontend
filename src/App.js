@@ -10,25 +10,28 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserContextData from "./context/UserContext";
 import Account from "./pages/Account";
+import CartContextData from "./context/CartContext";
 
 function App() {
   return (
     <>
       <UserContextData>
-        <Router>
-          <Routes>
-            <Route path='' element={<Home />}/>
-            <Route path='/products' element={<Products />}/>
-            <Route path='/products/add' element={<AddProducts />}/>
-            <Route path='/products/edit/:productID' element={<EditProducts />}/>
-            <Route path='/products/delete/:productID' element={<DelProducts />}/>
-            <Route path='/about' element={<AboutUs />}/>
-            <Route path='/contactus' element={<ContactUs />}/>
-            <Route path='/login' element={<Login />}/>
-            <Route path='/register' element={<Register />}/>
-            <Route path="/account" element={<Account />}/>
-          </Routes>
-        </Router>
+        <CartContextData>
+          <Router>
+            <Routes>
+              <Route path='' element={<Home />}/>
+              <Route path='/products' element={<Products />}/>
+              <Route path='/products/add' element={<AddProducts />}/>
+              <Route path='/products/edit/:productID' element={<EditProducts />}/>
+              <Route path='/products/delete/:productID' element={<DelProducts />}/>
+              <Route path='/about' element={<AboutUs />}/>
+              <Route path='/contactus' element={<ContactUs />}/>
+              <Route path='/login' element={<Login />}/>
+              <Route path='/register' element={<Register />}/>
+              <Route path="/account" element={<Account />}/>
+            </Routes>
+          </Router>
+        </CartContextData>
       </UserContextData>
     </>
   );

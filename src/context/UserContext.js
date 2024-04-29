@@ -9,6 +9,7 @@ export default function UserContextData(props) {
     const [role, setRole] = useState(0);
     const [accessToken, setAccessToken] = useState("");
     const [refreshToken, setRefreshToken] = useState("");
+    const [userid, setUserID] = useState(0)
     const [loginState, setLoginState] = useState(false);
 
 
@@ -20,12 +21,14 @@ export default function UserContextData(props) {
                 let accessToken = localStorage.getItem("accessToken")? localStorage.getItem("accessToken") : '';
                 let refreshToken = localStorage.getItem("refreshToken")? localStorage.getItem("refreshToken") : '';
                 let defaultrole = localStorage.getItem("role")? localStorage.getItem("role") : 0;
+                let defaultUser = localStorage.getItem("UserID")?localStorage.getItem("UserID") : 0;
                 setUsername(defaultUserName);
                 setEmail(defaultemail)
                 setAccessToken(accessToken);
                 setRefreshToken(refreshToken);
                 setRole(defaultrole)
                 setAuthHeader(accessToken,refreshToken)
+                setUserID(defaultUser)
                 if(defaultUserName)
                 {
                     setLoginState(true)
@@ -72,11 +75,13 @@ export default function UserContextData(props) {
                 setUsername(response.data.user.username);
                 setRole(response.data.user.role_id)
                 setLoginState(true)
-                setAuthHeader(response.data.accessToken, response.data.refreshToken)
+                await setAuthHeader(response.data.accessToken, response.data.refreshToken)
+                setUserID(response.data.user.user_id)
                 localStorage.setItem("username", response.data.user.username)
                 localStorage.setItem("email", response.data.user.email)
                 localStorage.setItem("accessToken", response.data.accessToken)
                 localStorage.setItem("role", response.data.user.role_id)
+                localStorage.setItem("UserID", response.data.user.user_id)
                 return true;
             }
             else
@@ -96,7 +101,7 @@ export default function UserContextData(props) {
             const response = await  APIHandler.post("/user/refresh", {
                 refreshToken : localStorage.getItem("refreshToken")
             })
-            setAuthHeader(response.data, localStorage.getItem("refreshToken"))
+            setAuthHeader(response.data.accessToken, localStorage.getItem("refreshToken"))
         } catch (error) {
             console.log("Error", error);
             return false;
@@ -116,6 +121,7 @@ export default function UserContextData(props) {
                 setUsername("");
                 setRole(0)
                 setLoginState(false);
+                setUserID(0);
                 clearAuthHeader();
                 localStorage.clear();
                 return true;
@@ -140,7 +146,9 @@ export default function UserContextData(props) {
         getRole : () => {return role},
         getAccessToken : () => {return accessToken},
         getrefreshToken : () => {return refreshToken},
-        getEmail : () => {return email}
+        getEmail : () => {return email},
+        getUserID : () => {return userid},
+        userid
     }
 
     return (
