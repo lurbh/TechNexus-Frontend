@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import ProductCardSeller from "../Main/ProductCardSeller";
-import ProductCard from "../Main/ProductCard";
+import ProductCardSeller from "./ProductCardSeller";
+import ProductCard from "./ProductCard";
 
 export default function ProductsList()
 {

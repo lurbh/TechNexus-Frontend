@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/TechNexus-Logo.png"
 import '../../assets/style.css'
 import { UserContext } from "../../context/UserContext";
+import { CartContext } from "../../context/CartContext";
 
 export default function Navbar(props) 
 {
   let navigate = useNavigate();
   const context = useContext(UserContext);
+  const cartcontext = useContext(CartContext)
 
   const handleClickOpen = (e) => {
     const menu = document.querySelector(".header-links");
@@ -54,12 +56,12 @@ export default function Navbar(props)
             <li className="close-nav" onClick={handleClickClose}><i className="bi bi-x"></i></li>
             <li><span onClick={() => navigate("/account")} className={`header-link ${props.currPage === "Account"?"nav-selected":"" }`}>Hi, {context.getUsername()}</span></li>
             <li><span onClick={() => context.logout()} className={`header-link ${props.currPage === "Logout"?"nav-selected":"" }`}>Sign Out</span></li>
-            <li><span onClick={() => navigate("/")} className={`header-link ${props.currPage === "Cart"?"nav-selected":"" }`}><i className="bi bi-cart"></i></span></li>
+            <li><span onClick={() => navigate("/cart")} className={`header-link ${props.currPage === "Cart"?"nav-selected":"" }`}><i className="bi bi-cart badge">{cartcontext.noOfItems && <span className="cart-badge">{cartcontext.noOfItems}</span>}</i></span></li>
           </ul> : <ul className="header-userlist">
             <li onClick={handleClickClose} className="close-nav"><i className="bi bi-x"></i></li>
             <li><span onClick={() => navigate("/login")} className={`header-link ${props.currPage === "Login"?"nav-selected":"" }`}>Login</span></li>
             <li><span onClick={() => navigate("/register")} className={`header-link ${props.currPage === "Register"?"nav-selected":"" }`}>Register</span></li>
-            <li><span onClick={() => navigate("/")} className={`header-link ${props.currPage === "Cart"?"nav-selected":"" }`}><i className="bi bi-cart"></i></span></li>
+            <li><span onClick={() => navigate("/cart")} className={`header-link ${props.currPage === "Cart"?"nav-selected":"" }`}><i className="bi bi-cart"></i></span></li>
           </ul>
           }
           

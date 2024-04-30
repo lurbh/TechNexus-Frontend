@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import UserContextData from "./context/UserContext";
 import Account from "./pages/Account";
 import CartContextData from "./context/CartContext";
+import Cart from "./pages/Cart"
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path='/login' element={<Login />}/>
               <Route path='/register' element={<Register />}/>
               <Route path="/account" element={<Account />}/>
+              <Route path="/cart" element={<Cart />}/>
             </Routes>
           </Router>
         </CartContextData>

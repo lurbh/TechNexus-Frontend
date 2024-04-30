@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import APIHandler from '../api/api';
 import { UserContext } from "./UserContext";
-import { set } from "@cloudinary/url-gen/actions/variable";
 
 export const CartContext = createContext();
 
@@ -16,13 +15,18 @@ export default function CartContextData(props) {
 
     const fetchData = async () => {
       try {
-        if(userContext.getUserID())
+        if(userContext.userid)
         {
-          const getCartItems = await APIHandler.get("/cart/usercart", {
-            user_id : userContext.getUserID()
-          })
-          console.log(getCartItems);
-          setCart(getCartItems.data.cart_items)
+          const getCartItems = await APIHandler.get(`/cart/usercart/${userContext.userid}`);
+          setCart(getCartItems.data.cart_items);
+          setNoOfItems(getCartItems.data.cart_items.length);
+          let totalPrice = 0;
+          for (let item of getCartItems.data.cart_items)
+          {
+            let itemprice = item.quantity * item.product.price
+            totalPrice += itemprice;
+          }
+          setTotalPrice(totalPrice)
         }
       }
       catch(error)
@@ -32,9 +36,12 @@ export default function CartContextData(props) {
     }
 
     fetchData()
-  },[UserContext.userid])
+  },[userContext.userid])
 
   const context =  {
+    cart,
+    noOfItems,
+    totalPrice
   }
 
   return (
