@@ -1,12 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
 export default function Productsmcard(props){
     let cartcontext = useContext(CartContext) 
     const [inCart,setInCart] = useState(false);
-    let check = cartcontext.checkInCart(props.item.id);
-    // setInCart(check);
-    //setInCart(cartcontext.checkInCart(props.item.id));
+    const [cartQuantity, setCartQuantity] = useState(0);
+
+    useEffect(() => {
+        if(cartcontext.cart)
+        {
+            console.log("useEffect IN")
+            setInCart(false);
+            for(const cartitem of cartcontext.cart)
+            {
+                if(props.item.id === cartitem.product_id)
+                {
+                    setInCart(true);
+                    setCartQuantity(cartitem.quantity);
+                }
+            }
+        }
+    },[cartcontext.cart,props.item.id])
 
     return (
         <div className="smcard-product">
@@ -18,11 +32,14 @@ export default function Productsmcard(props){
                 <div className="smcard-product-buttons">
                     {inCart? 
                     <div className="product-quantity">
+                        <button className="btn-remove-from-cart" onClick={(e) => {
+                            cartcontext.deleteFromCart(props.item.id)
+                        }}>Remove</button>
                         <button className="product-minus-quantity">-</button>
-                        <span className="product-quantity">{props.item.quantity}</span>
+                        <span className="product-quantity">{cartQuantity}</span>
                         <button className="product-plus-quantity">+</button>
                     </div>
-                    :<button className="btn-edit" onClick={(e) => {
+                    :<button className="btn-add-to-cart" onClick={(e) => {
                         cartcontext.addToCart(props.item.id)
                     }}>Add to Cart</button>}
                 </div>

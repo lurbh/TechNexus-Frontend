@@ -104,6 +104,15 @@ export default function UserContextData(props) {
             setAuthHeader(response.data.accessToken, localStorage.getItem("refreshToken"))
         } catch (error) {
             console.log("Error", error);
+            setAccessToken("")
+            setRefreshToken("")
+            setEmail("")
+            setUsername("");
+            setRole(0)
+            setLoginState(false);
+            setUserID(0);
+            clearAuthHeader();
+            localStorage.clear();
             return false;
         }
     }
