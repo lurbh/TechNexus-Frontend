@@ -38,10 +38,50 @@ export default function CartContextData(props) {
     fetchData()
   },[userContext.userid])
 
+  const addToCart = async (product_id) => {
+    const response = await APIHandler.post("/usercart", {
+      user_id : userContext.userid,
+      product_id : product_id,
+      quantity: 1
+    })
+    
+    if(response.status === 201)
+    {
+      console.log(response.data)
+    }
+  }
+
+  const increaseQuantity = async (product_id) => {
+
+  }
+
+  const decreaseQuantity = async (product_id) => {
+    
+  }
+
+  const deleteFromCart = async (product_id) => {
+
+  }
+
+  const checkInCart = (product_id) => {
+    for (const item of cart) 
+    {
+      // console.log(item.product.id, product_id)
+      if(item.product.id === product_id)
+        return true
+    }
+    return false
+  }
+
   const context =  {
     cart,
     noOfItems,
-    totalPrice
+    totalPrice,
+    addToCart : addToCart,
+    increaseQuantity: increaseQuantity,
+    decreaseQuantity : decreaseQuantity,
+    deleteFromCart : deleteFromCart,
+    checkInCart: checkInCart
   }
 
   return (

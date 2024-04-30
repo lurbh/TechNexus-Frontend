@@ -1,8 +1,12 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 
 export default function Productsmcard(props){
-    let navigate = useNavigate(); 
+    let cartcontext = useContext(CartContext) 
+    const [inCart,setInCart] = useState(false);
+    let check = cartcontext.checkInCart(props.item.id);
+    // setInCart(check);
+    //setInCart(cartcontext.checkInCart(props.item.id));
 
     return (
         <div className="smcard-product">
@@ -12,7 +16,15 @@ export default function Productsmcard(props){
                 <h3 className="smcard-product-price">Price : {props.item?props.item.price:"Price"} - Qty Left : ( {props.item?props.item.quantity_available:"quantity_available"} )</h3>
                 <h5 className="smcard-product-description">{props.item?props.item.description:"Description"}</h5>
                 <div className="smcard-product-buttons">
-                    <button className="btn-edit" onClick={(e) => {}}>Add to Cart</button>
+                    {inCart? 
+                    <div className="product-quantity">
+                        <button className="product-minus-quantity">-</button>
+                        <span className="product-quantity">{props.item.quantity}</span>
+                        <button className="product-plus-quantity">+</button>
+                    </div>
+                    :<button className="btn-edit" onClick={(e) => {
+                        cartcontext.addToCart(props.item.id)
+                    }}>Add to Cart</button>}
                 </div>
             </div>
         </div>
