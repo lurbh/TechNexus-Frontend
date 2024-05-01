@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import APIHandler from '../api/api';
 import { UserContext } from "./UserContext";
-import { set } from "@cloudinary/url-gen/actions/variable";
 
 export const CartContext = createContext();
 
@@ -16,6 +15,12 @@ export default function CartContextData(props) {
     const cartitem = cart.find((index) =>  {return index.product_id === product_id});
     console.log(cartitem.id);
     return cartitem.id;
+  }
+
+  const getCartItemQty = (product_id) => {
+    const cartitem = cart.find((index) =>  {return index.product_id === product_id});
+    console.log(cartitem.id);
+    return cartitem.quantity;
   }
   
   useEffect(() => {
@@ -35,11 +40,13 @@ export default function CartContextData(props) {
       catch(error)
       {
         console.log(error)
+        if(error.response.status === 498)
+          userContext.refresh();
       }
     }
 
     fetchData()
-  },[userContext.userid])
+  },[userContext.userid, userContext])
 
   useEffect(() => {
     console.log(cart)
@@ -80,20 +87,68 @@ export default function CartContextData(props) {
       }
     } catch (error) {
       console.log(error);
+      if(error.response.status === 498)
+        userContext.refresh();
     }
     
   }
 
   const increaseQuantity = async (product_id) => {
-
+    try {
+      const cartitemID = getCartItemID(product_id);
+      const cartqty = getCartItemQty(product_id)
+      const response = await APIHandler.put(`/cart/usercart/${cartitemID}`, {
+        user_id : userContext.userid,
+        product_id : product_id,
+        quantity: cartqty + 1
+      })
+      if (response.status === 201)
+      {
+        console.log(response.data.message);
+        const clonecart = cart.slice();
+        const indexToUpdate = clonecart.findIndex((p) => p.id===cartitemID)
+        clonecart.splice(indexToUpdate,1,response.data.message);
+        setCart(clonecart);
+      }
+    } catch (error) {
+      console.log(error);
+      if(error.response.status === 498)
+        userContext.refresh();
+    }
   }
 
   const decreaseQuantity = async (product_id) => {
-    
+    try {
+      const cartitemID = getCartItemID(product_id);
+      const cartqty = getCartItemQty(product_id)
+      if(cartqty === 1)
+      {
+        deleteFromCart(product_id);
+      }
+      else
+      {
+        const response = await APIHandler.put(`/cart/usercart/${cartitemID}`, {
+          user_id : userContext.userid,
+          product_id : product_id,
+          quantity: cartqty - 1
+        })
+        if (response.status === 201)
+        {
+          console.log(response.data.message);
+          const clonecart = cart.slice();
+          const indexToUpdate = clonecart.findIndex((p) => p.id===cartitemID)
+          clonecart.splice(indexToUpdate,1,response.data.message);
+          setCart(clonecart);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      if(error.response.status === 498)
+        userContext.refresh();
+    }
   }
 
   const deleteFromCart = async (product_id) => {
-    console.log("Remove Cart In")
     try {
       const cartitemID = getCartItemID(product_id)
       const response = await APIHandler.delete(`/cart/usercart/${cartitemID}`)
@@ -106,6 +161,8 @@ export default function CartContextData(props) {
       }
     } catch (error) {
       console.log(error);
+      if(error.response.status === 498)
+        userContext.refresh();
     }
   }
 

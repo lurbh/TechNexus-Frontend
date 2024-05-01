@@ -9,7 +9,6 @@ export default function Productsmcard(props){
     useEffect(() => {
         if(cartcontext.cart)
         {
-            console.log("useEffect IN")
             setInCart(false);
             for(const cartitem of cartcontext.cart)
             {
@@ -35,9 +34,13 @@ export default function Productsmcard(props){
                         <button className="btn-remove-from-cart" onClick={(e) => {
                             cartcontext.deleteFromCart(props.item.id)
                         }}>Remove</button>
-                        <button className="product-minus-quantity">-</button>
+                        <button className="product-minus-quantity" onClick={(e) => {
+                            cartcontext.decreaseQuantity(props.item.id)
+                        }}>-</button>
                         <span className="product-quantity">{cartQuantity}</span>
-                        <button className="product-plus-quantity">+</button>
+                        <button className="product-plus-quantity" onClick={(e) => {
+                            cartcontext.increaseQuantity(props.item.id)
+                        }}>+</button>
                     </div>
                     :<button className="btn-add-to-cart" onClick={(e) => {
                         cartcontext.addToCart(props.item.id)

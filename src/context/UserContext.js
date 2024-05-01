@@ -26,13 +26,13 @@ export default function UserContextData(props) {
                 setEmail(defaultemail)
                 setAccessToken(accessToken);
                 setRefreshToken(refreshToken);
-                setRole(defaultrole)
-                setAuthHeader(accessToken,refreshToken)
-                setUserID(defaultUser)
+                setRole(defaultrole);
+                setAuthHeader(accessToken,refreshToken);          
                 if(defaultUserName)
                 {
-                    setLoginState(true)
                     refresh();
+                    setLoginState(true);
+                    setUserID(defaultUser);
                 }
             } catch (error) {
                 console.error('Error in username and id retrieval and token', error)
