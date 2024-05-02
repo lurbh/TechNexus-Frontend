@@ -1,16 +1,15 @@
 import React from "react";
 import Navbar from "../components/Main/Navbar";
 import Footer from "../components/Main/Footer";
-import CartSection from "../components/Cart/CartSection";
 
 
-export default function Cart()
+export default function Orders()
 {
     
     return (
         <>
-            <Navbar currPage='Cart' />
-            <CartSection />
+            <Navbar currPage='Orders' />
+            
             <Footer />
         </>
     )

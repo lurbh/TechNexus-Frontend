@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import CloudinaryUploadWidget from "../../context/CloudinaryContext";
 import env from "react-dotenv";
 
@@ -7,6 +7,10 @@ export default function UploadImage(props){
     const [img_url, setImg_Url] = useState(props.img);
     const [cloudName] = useState(useRef(env.CLOUDINARY_NAME));
     const [uploadPreset] = useState(useRef(env.CLOUDINARY_UPLOAD_PRESET));
+
+    useEffect(() => {
+        setImg_Url(props.img);
+    },[props.img])
 
     const [uwConfig] = useState({
         cloudName: cloudName.current,
