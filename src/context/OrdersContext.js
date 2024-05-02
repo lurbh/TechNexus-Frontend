@@ -32,8 +32,14 @@ export default function OrdersContextData(props) {
             fetchData()
     },[userContext])
 
+    const getOrderByID = async (order_id) => {
+        const foundOrder = orders.filter((o) => o.id === parseInt(order_id)) 
+        return foundOrder;
+    }
+
     const context =  {
-        orders
+        orders,
+        getOrderByID:getOrderByID
       }
     
       return (

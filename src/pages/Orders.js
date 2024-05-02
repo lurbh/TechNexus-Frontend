@@ -10,7 +10,7 @@ export default function Orders()
     
     return (
         <>
-            <Navbar currPage='Orders' />
+            <Navbar currPage='Account' />
                 <OrdersContextData>
                     <OrderList />
                 </OrdersContextData>
