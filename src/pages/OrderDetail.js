@@ -2,17 +2,17 @@ import React from "react";
 import Navbar from "../components/Main/Navbar";
 import Footer from "../components/Main/Footer";
 import OrdersContextData from "../context/OrdersContext";
-import OrderList from "../components/Order/OrderList";
+import OrderInfo from "../components/Order/OrderInfo";
 
 
-export default function Orders()
+export default function OrderDetail()
 {
     
     return (
         <>
             <Navbar currPage='Orders' />
                 <OrdersContextData>
-                    <OrderList />
+                    <OrderInfo />
                 </OrdersContextData>
             <Footer />
         </>
