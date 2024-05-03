@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { OrdersContext } from "../../context/OrdersContext";
+import OrderCard from "./OrderCard";
 
 
 export default function OrderInfo(props)
@@ -8,18 +9,22 @@ export default function OrderInfo(props)
     const [orderDetail,setOrderDetail] = useState({})
 
     useEffect(()=> {
-        const fetchorder = () => {
-            let tempOrder = ordercontext.getOrderByID(props.orderID)
+        const fetchorder = async () => {
+            let tempOrder = await ordercontext.getOrderByID(props.orderID);
+            console.log(tempOrder);
             if(tempOrder.length)
             {
                 setOrderDetail(...tempOrder);
-                console.log(orderDetail)
+                
             }
         }
         fetchorder()
-    },[props.orderID])
+    },[props.orderID,ordercontext])
+
+
+    console.log(orderDetail);
 
     return (
-        <></>
+        <OrderCard item={orderDetail}/>
     )
 }

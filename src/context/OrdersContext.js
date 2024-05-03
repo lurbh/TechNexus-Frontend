@@ -13,8 +13,9 @@ export default function OrdersContextData(props) {
             try {
                 if(userContext.userid)
                 {
-                    const getCartItems = await APIHandler.get(`/orders/${userContext.userid}`);
-                    setOrders(getCartItems.data.cart_items)
+                    const getOrderItems = await APIHandler.get(`/orders/${userContext.userid}`);
+                    console.log(getOrderItems)
+                    setOrders(getOrderItems.data.orders)
                 }
                 else
                 {
@@ -34,8 +35,10 @@ export default function OrdersContextData(props) {
 
     const getOrderByID = async (order_id) => {
         const foundOrder = orders.filter((o) => o.id === parseInt(order_id)) 
+        console.log(foundOrder);
         return foundOrder;
     }
+
 
     const context =  {
         orders,
