@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import OrderProduct from "./OrderProduct";
 
 
@@ -6,6 +6,9 @@ export default function OrderCard(props)
 {
   console.log(props.item)
   const localDate = new Date(props.item.order_date).toLocaleString();
+  let totalPrice = 0;
+  for(let i of props.item.order_items)
+    totalPrice += i.unit_price;
     return (
       <div className="card-order">
         <div className="order-bar">
@@ -19,6 +22,9 @@ export default function OrderCard(props)
               <OrderProduct key={item.id} item={item} />
             ))
           }
+        </div>
+        <div className="order-price">
+          <span className="order-price-span">Total Price: {totalPrice}</span>
         </div>
       </div>
     )

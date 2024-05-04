@@ -26,7 +26,7 @@ export default function CartSection()
                     <div className="cart-footer">
                         <h2 className="cart-footer-title">Total Price:</h2>
                         <span className="cart-footer-total-price">{cartcontext.totalPrice}</span>
-                        <button className="checkout-button">Check Out</button>
+                        <button className="checkout-button" onClick={()=> {cartcontext.checkout()}}>Check Out</button>
                     </div>
                 </div>
             </div>   

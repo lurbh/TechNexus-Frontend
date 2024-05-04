@@ -14,6 +14,7 @@ import CartContextData from "./context/CartContext";
 import Cart from "./pages/Cart"
 import Orders from "./pages/Orders";
 import OrderDetail from "./pages/OrderDetail";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Route path="/cart" element={<Cart />}/>
               <Route path="/orders" element={<Orders />}/>
               <Route path="/orders/:orderID" element={<OrderDetail />}/>
+              <Route path="/paymentsuccess/:orderID" element={<PaymentSuccess />}/>
             </Routes>
           </Router>
         </CartContextData>

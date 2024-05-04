@@ -166,6 +166,24 @@ export default function CartContextData(props) {
     }
   }
 
+  const checkout = async () => {
+    try {
+      const response = await APIHandler.post(`/checkout`, {
+        user_id : userContext.userid,
+      });
+      if(response.status === 200)
+      {
+        setCart([]);
+        window.location.href = response.data.stripeURL;
+      }
+
+    } catch (error) {
+      console.log(error);
+      if(error.response.status === 498)
+        userContext.refresh();
+    }
+  }
+
 
   const context =  {
     cart,
@@ -175,6 +193,7 @@ export default function CartContextData(props) {
     increaseQuantity: increaseQuantity,
     decreaseQuantity : decreaseQuantity,
     deleteFromCart : deleteFromCart,
+    checkout: checkout
   }
 
   return (

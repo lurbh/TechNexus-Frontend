@@ -39,10 +39,25 @@ export default function OrdersContextData(props) {
         return foundOrder;
     }
 
+    const paymentCompleted = async (order_id) => {
+        console.log("Payment Hit")
+        const response = await APIHandler.put(`/orders/payment/${order_id}`);
+        if(response.status === 200)
+        {
+            const cloneorders = orders.slice();
+            const indexToUpdate = cloneorders.findIndex((p) => p.id===order_id)
+            cloneorders.splice(indexToUpdate,1,response.data.orders);
+            setOrders(cloneorders);
+            return true;
+        }
+        return false;
+    }
+
 
     const context =  {
         orders,
-        getOrderByID:getOrderByID
+        getOrderByID:getOrderByID,
+        paymentCompleted:paymentCompleted
       }
     
       return (
