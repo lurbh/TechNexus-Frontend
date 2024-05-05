@@ -8,6 +8,10 @@ export default function Footer() {
 
   let navigate = useNavigate();
 
+  const handleSubmit = () => {
+    console.log(email);
+  }
+
   return (
     <footer className="footer">
       <div>
@@ -18,16 +22,16 @@ export default function Footer() {
           <p>&copy; 2024 TechNexus. All rights reserved.</p>
           <ul className="footer-links">
             <li>
-              <a onClick={() => navigate("/")}>Home</a>
+              <span onClick={() => navigate("/")}>Home</span>
             </li>
             <li>
-              <a onClick={() => navigate("/products")}>Products</a>
+              <span onClick={() => navigate("/products")}>Products</span>
             </li>
             <li>
-              <a onClick={() => navigate("/about")}>About</a>
+              <span onClick={() => navigate("/about")}>About</span>
             </li>
             <li>
-              <a onClick={() => navigate("/contactus")}>Contact</a>
+              <span onClick={() => navigate("/contactus")}>Contact</span>
             </li>
           </ul>
         </div>
@@ -44,7 +48,7 @@ export default function Footer() {
               setEmail(event.target.value);
             }}
           />
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button" onClick={handleSubmit}>
             <i className="bi bi-envelope-fill" />
           </button>
         </div>

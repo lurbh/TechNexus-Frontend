@@ -9,15 +9,20 @@ export default function OrderInfo(props) {
   useEffect(() => {
     const fetchorder = async () => {
       let tempOrder = await ordercontext.getOrderByID(props.orderID);
-      console.log(tempOrder);
-      if (tempOrder.length) {
+      if (Array.isArray(tempOrder) && tempOrder.length) {
         setOrderDetail(...tempOrder);
       }
     };
     fetchorder();
   }, [props.orderID, ordercontext]);
 
-  console.log(orderDetail);
 
-  return <OrderCard item={orderDetail} />;
+  return (
+    <div className="order-info">
+        <h2 className="order-info-title">Order Info</h2>
+        {
+            Object.keys(orderDetail).length === 0?<></>:<OrderCard item={orderDetail} />
+        }
+    </div>
+  )
 }

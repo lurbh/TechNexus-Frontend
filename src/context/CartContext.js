@@ -56,6 +56,8 @@ export default function CartContextData(props) {
           let itemprice = item.quantity * item.product.price;
           totalPrice += itemprice;
         }
+        totalPrice = totalPrice.toFixed(2);
+        console.log(totalPrice);
         setTotalPrice(totalPrice);
       }
     } else {

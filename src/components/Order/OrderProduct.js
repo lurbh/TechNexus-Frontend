@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function OrderProduct(props) {
-  console.log(props);
   return (
     <div className="order-product-card">
       <img

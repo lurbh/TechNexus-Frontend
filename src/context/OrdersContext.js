@@ -15,7 +15,6 @@ export default function OrdersContextData(props) {
           const getOrderItems = await APIHandler.get(
             `/orders/${userContext.userid}`
           );
-          console.log(getOrderItems);
           setOrders(getOrderItems.data.orders);
         } else {
           setOrders([]);
@@ -30,22 +29,33 @@ export default function OrdersContextData(props) {
   }, [userContext]);
 
   const getOrderByID = async (order_id) => {
-    const foundOrder = orders.filter((o) => o.id === parseInt(order_id));
-    console.log(foundOrder);
-    return foundOrder;
+    if(orders.length)
+    {
+        const foundOrder = orders.filter((o) => o.id === parseInt(order_id));
+        console.log(foundOrder);
+        return foundOrder;
+    }
+    
   };
 
   const paymentCompleted = async (order_id) => {
-    console.log("Payment Hit");
-    const response = await APIHandler.put(`/orders/payment/${order_id}`);
-    if (response.status === 200) {
-      const cloneorders = orders.slice();
-      const indexToUpdate = cloneorders.findIndex((p) => p.id === order_id);
-      cloneorders.splice(indexToUpdate, 1, response.data.orders);
-      setOrders(cloneorders);
-      return true;
+    try
+    {
+        const response = await APIHandler.put(`/orders/payment/${order_id}`);
+        if (response.status === 200) {
+        const cloneorders = orders.slice();
+        const indexToUpdate = cloneorders.findIndex((p) => p.id === order_id);
+        cloneorders.splice(indexToUpdate, 1, response.data.orders);
+        setOrders(cloneorders);
+        return true;
+        }
+        return false;
     }
-    return false;
+    catch (error)
+    {
+        console.log(error);
+        if (error.response.status === 498) userContext.refresh();
+    }
   };
 
   const context = {

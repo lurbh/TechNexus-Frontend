@@ -2,7 +2,6 @@ import React from "react";
 import OrderProduct from "./OrderProduct";
 
 export default function OrderCard(props) {
-  console.log(props.item);
   const localDate = new Date(props.item.order_date).toLocaleString();
   let totalPrice = 0;
   for (let i of props.item.order_items) totalPrice += i.unit_price;

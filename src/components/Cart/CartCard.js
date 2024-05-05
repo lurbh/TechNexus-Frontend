@@ -39,7 +39,7 @@ export default function CartCard(props) {
         </div>
         <h3 className="cart-product-totalprice">
           {props.item
-            ? props.item.product.price * props.item.quantity
+            ? (props.item.product.price * props.item.quantity).toFixed(2)
             : "Price"}
         </h3>
         <button

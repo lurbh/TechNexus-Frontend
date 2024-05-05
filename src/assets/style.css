@@ -1108,6 +1108,15 @@ select.product-input {
   font-weight: bold;
 }
 
+.order-info {
+    margin-top: 25px;
+}
+
+.order-info-title {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   /* Navbar */
