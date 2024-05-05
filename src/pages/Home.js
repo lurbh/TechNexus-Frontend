@@ -5,16 +5,15 @@ import Footer from "../components/Main/Footer";
 import Categories from "../components/Home/Categories";
 import ProductContextData from "../context/ProductContext";
 
-export default function Home() 
-{
+export default function Home() {
   return (
     <>
-        <Navbar currPage='Home'/>
-        <Hero />
-        <ProductContextData>
-            <Categories />
-        </ProductContextData>
-        <Footer />
+      <Navbar currPage="Home" />
+      <Hero />
+      <ProductContextData>
+        <Categories />
+      </ProductContextData>
+      <Footer />
     </>
-  )
+  );
 }

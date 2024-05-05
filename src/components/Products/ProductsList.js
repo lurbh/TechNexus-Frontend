@@ -3,26 +3,31 @@ import { ProductContext } from "../../context/ProductContext";
 import ProductCardSeller from "./ProductCardSeller";
 import ProductCard from "./ProductCard";
 
-export default function ProductsList()
-{
-    const context = useContext(ProductContext);
+export default function ProductsList() {
+  const context = useContext(ProductContext);
 
-    return (
-        <div className="products-section">
-            <h2 className="product-list-header">Product List</h2>
-            {context.products.length?
-            <ul className="product-list-user">
-                {context.getProducts().map(product =>  (
-                    <ProductCard key={product.id} item={product} />
-                ))}
-            </ul>:<h4 className="loading">Loading ...</h4>}
-            <h2 className="product-list-header">Product List</h2>
-            {context.products.length?
-            <ul className="product-list-seller">
-                {context.getProducts().map(product =>  (
-                    <ProductCardSeller key={product.id} item={product} />
-                ))}
-            </ul>:<h4 className="loading">Loading ...</h4>}
-        </div>
-    )
+  return (
+    <div className="products-section">
+      <h2 className="product-list-header">Product List</h2>
+      {context.products.length ? (
+        <ul className="product-list-user">
+          {context.getProducts().map((product) => (
+            <ProductCard key={product.id} item={product} />
+          ))}
+        </ul>
+      ) : (
+        <h4 className="loading">Loading ...</h4>
+      )}
+      <h2 className="product-list-header">Product List</h2>
+      {context.products.length ? (
+        <ul className="product-list-seller">
+          {context.getProducts().map((product) => (
+            <ProductCardSeller key={product.id} item={product} />
+          ))}
+        </ul>
+      ) : (
+        <h4 className="loading">Loading ...</h4>
+      )}
+    </div>
+  );
 }
