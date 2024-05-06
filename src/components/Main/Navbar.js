@@ -117,15 +117,23 @@ export default function Navbar(props) {
             <li className="close-nav" onClick={handleClickClose}>
               <i className="bi bi-x"></i>
             </li>
-            <li>
-              <span
+            <li className="header-dropdown">
+            <span
                 onClick={() => navigate("/account")}
                 className={`header-link ${
                   props.currPage === "Account" ? "nav-selected" : ""
                 }`}
-              >
-                Hi, {context.getUsername()}
-              </span>
+                >
+                    Hi, {context.getUsername()}
+                </span>
+                <div className="header-link-dropdown">
+                <span onClick={() => navigate("/accounts")}>
+                    Account
+                </span>
+                <span onClick={() => navigate("/orders")}>
+                    Orders
+                </span>
+                </div>
             </li>
             <li>
               <span

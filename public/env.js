@@ -1,7 +1,7 @@
 window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\User\\AppData\\Roaming",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_23064_DMXHEOKBSNWAECRK",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_26392_JYNBTAPTAPKFLSUS",
   "CLOUDINARY_NAME": "dymr3ncda",
   "CLOUDINARY_UPLOAD_PRESET": "TechNexus",
   "CLOUDINARY_URL": "cloudinary://234827372618192:9ZuP0NZRAoU2p4nqPsRp68kN8pc@dymr3ncda",
@@ -15,7 +15,7 @@ window.env = {
   "CYGWIN": "mintty",
   "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
   "EDITOR": "C:\\WINDOWS\\notepad.exe",
-  "EFC_5372": "1",
+  "EFC_5460": "1",
   "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
   "FPS_BROWSER_USER_PROFILE_STRING": "Default",
   "GIT_ASKPASS": "c:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",

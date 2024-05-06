@@ -11,7 +11,7 @@ export default function OrderList() {
       {ordercontext.orders.length ? (
         <ul className="order-list-user">
           {ordercontext.orders.map((order) => (
-            <OrderCard key={order.id} item={order} />
+            <OrderCard key={order.id} item={order} button={true}/>
           ))}
         </ul>
       ) : (
