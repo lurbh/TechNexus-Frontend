@@ -60,6 +60,11 @@ export default function CartContextData(props) {
         console.log(totalPrice);
         setTotalPrice(totalPrice);
       }
+      else
+      {
+        setNoOfItems(0);
+        setTotalPrice(0);
+      }
     } else {
       setNoOfItems(0);
       setTotalPrice(0);
