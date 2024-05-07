@@ -27,7 +27,6 @@ function CloudinaryUploadWidget({ uwConfig, setImg_Url, setImage_url }) {
         uwConfig,
         (error, result) => {
           if (!error && result && result.event === "success") {
-            console.log(result.info);
             setImg_Url(result.info.secure_url);
             setImage_url(result.info.secure_url);
           }

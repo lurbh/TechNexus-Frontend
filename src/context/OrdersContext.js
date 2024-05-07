@@ -32,7 +32,6 @@ export default function OrdersContextData(props) {
     if(orders.length)
     {
         const foundOrder = orders.filter((o) => o.id === parseInt(order_id));
-        console.log(foundOrder);
         return foundOrder;
     }
     

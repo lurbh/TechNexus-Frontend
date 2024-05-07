@@ -14,7 +14,6 @@ export default function CartContextData(props) {
     const cartitem = cart.find((index) => {
       return index.product_id === product_id;
     });
-    console.log(cartitem.id);
     return cartitem.id;
   };
 
@@ -22,7 +21,6 @@ export default function CartContextData(props) {
     const cartitem = cart.find((index) => {
       return index.product_id === product_id;
     });
-    console.log(cartitem.id);
     return cartitem.quantity;
   };
 
@@ -47,7 +45,6 @@ export default function CartContextData(props) {
   }, [userContext.userid, userContext]);
 
   useEffect(() => {
-    console.log(cart);
     if (cart) {
       if (cart.length) {
         setNoOfItems(cart.length);
@@ -57,7 +54,6 @@ export default function CartContextData(props) {
           totalPrice += itemprice;
         }
         totalPrice = totalPrice.toFixed(2);
-        console.log(totalPrice);
         setTotalPrice(totalPrice);
       }
       else
@@ -80,7 +76,6 @@ export default function CartContextData(props) {
       });
 
       if (response.status === 201) {
-        console.log(response.data.message);
         setCart([...cart, response.data.message]);
       }
     } catch (error) {
@@ -99,7 +94,6 @@ export default function CartContextData(props) {
         quantity: cartqty + 1,
       });
       if (response.status === 201) {
-        console.log(response.data.message);
         const clonecart = cart.slice();
         const indexToUpdate = clonecart.findIndex((p) => p.id === cartitemID);
         clonecart.splice(indexToUpdate, 1, response.data.message);
@@ -124,7 +118,6 @@ export default function CartContextData(props) {
           quantity: cartqty - 1,
         });
         if (response.status === 201) {
-          console.log(response.data.message);
           const clonecart = cart.slice();
           const indexToUpdate = clonecart.findIndex((p) => p.id === cartitemID);
           clonecart.splice(indexToUpdate, 1, response.data.message);
