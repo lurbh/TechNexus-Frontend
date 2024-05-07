@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import ProductCard from "./ProductCard";
+import ProductCardSeller from "./ProductCardSeller";
 
-export default function ProductsList() {
+
+export default function ProductsListSeller() {
   const context = useContext(ProductContext);
 
   return (
     <div className="products-section">
-      <h2 className="product-list-header">Product List</h2>
+      <h2 className="product-list-header">Seller Product List</h2>
       {context.products.length ? (
-        <ul className="product-list-user">
+        <ul className="product-list-seller">
           {context.getProducts().map((product) => (
-            <ProductCard key={product.id} item={product} />
+            <ProductCardSeller key={product.id} item={product} />
           ))}
         </ul>
       ) : (

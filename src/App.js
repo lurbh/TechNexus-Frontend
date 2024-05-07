@@ -14,6 +14,7 @@ import CartContextData from "./context/CartContext";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
 import OrderDetail from "./pages/OrderDetail";
+import ProductsSeller from "./pages/ProductsSeller";
 
 function App() {
   return (
@@ -24,13 +25,14 @@ function App() {
             <Routes>
               <Route path="" element={<Home />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/products/add" element={<AddProducts />} />
+              <Route path="/sellerproducts" element={<ProductsSeller />} />
+              <Route path="/sellerproducts/add" element={<AddProducts />} />
               <Route
-                path="/products/edit/:productID"
+                path="/sellerproducts/edit/:productID"
                 element={<EditProducts />}
               />
               <Route
-                path="/products/delete/:productID"
+                path="/sellerproducts/delete/:productID"
                 element={<DelProducts />}
               />
               <Route path="/about" element={<AboutUs />} />

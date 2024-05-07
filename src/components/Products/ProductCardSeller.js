@@ -26,7 +26,7 @@ export default function ProductCardSeller(props) {
           <button
             className="btn-edit"
             onClick={(e) => {
-              navigate(`/products/edit/${props.item.id}`);
+              navigate(`/sellerproducts/edit/${props.item.id}`);
             }}
           >
             Edit
@@ -34,7 +34,7 @@ export default function ProductCardSeller(props) {
           <button
             className="btn-delete"
             onClick={(e) => {
-              navigate(`/products/delete/${props.item.id}`);
+              navigate(`/sellerproducts/delete/${props.item.id}`);
             }}
           >
             Delete

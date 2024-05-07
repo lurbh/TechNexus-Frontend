@@ -195,7 +195,7 @@ export default function AddProductsForm() {
               formState.quantity_available,
               image_url
             );
-            navigate("/products");
+            navigate("/sellerproducts");
           }}
         >
           Add Product

@@ -506,6 +506,7 @@ select.product-input {
 .products-section {
   background-color: #393939;
   padding-top: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .product-list-seller {
@@ -913,9 +914,8 @@ select.product-input {
 }
 
 .cart-section {
-  background-color: #f8f9fa;
+  background-color: #393939;
   padding: 20px;
-  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -926,7 +926,7 @@ select.product-input {
 }
 
 .cart-body {
-  background-color: #fff;
+  background-color: #95b8d1;
   border-radius: 8px;
   padding: 20px;
 }
@@ -974,7 +974,7 @@ select.product-input {
   justify-content: flex-end;
   align-items: center;
   padding: 10px;
-  background-color: #f8f9fa;
+  background-color: #95b8d1;
   border-top: 1px solid #ddd;
   padding-right: 3%;
 }
@@ -995,7 +995,7 @@ select.product-input {
 .checkout-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #6c3a9b;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -1006,12 +1006,14 @@ select.product-input {
 }
 
 .checkout-button:hover {
-  background-color: #0056b3;
+  background-color: #551a8b;
 }
 
 /* Orders */
 .orders-section {
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #393939;
 }
 
 .order-list-header {
@@ -1037,6 +1039,7 @@ select.product-input {
   width: 90%;
   margin: auto;
   margin-bottom: 20px;
+  background-color: #95b8d1;
 }
 
 .order-bar {
@@ -1072,7 +1075,7 @@ select.product-input {
   height: 100px;
   object-fit: contain;
   margin-right: 20px;
-  background-color: azure;
+  background-color: #95b8d1;
 }
 
 .order-product-content {

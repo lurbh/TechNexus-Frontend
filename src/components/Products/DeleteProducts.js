@@ -40,7 +40,7 @@ export default function DeleteProduct(props) {
           className="del-delete"
           onClick={() => {
             context.deleteProduct(props.productID);
-            navigate("/products");
+            navigate("/sellerproducts");
           }}
         >
           Delete

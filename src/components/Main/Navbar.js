@@ -49,7 +49,45 @@ export default function Navbar(props) {
               Home
             </span>
           </li>
+          {
+            context.getRole() === 2 || context.getRole() === 0 ? <li className="header-dropdown">
+            <span
+              onClick={() => navigate("/products")}
+              className={`header-link ${
+                props.currPage === "Products" ? "nav-selected" : ""
+              }`}
+            >
+              Products
+            </span>
+            {/* <div className="header-link-dropdown">
+              <span onClick={() => navigate("/products")}>
+                View All Products
+              </span>
+              <span onClick={() => navigate("/products/add")}>
+                Add Products
+              </span>
+            </div> */}
+          </li> :
           <li className="header-dropdown">
+          <span
+            onClick={() => navigate("/sellerproducts")}
+            className={`header-link ${
+              props.currPage === "Products" ? "nav-selected" : ""
+            }`}
+          >
+            Products Seller
+          </span>
+          <div className="header-link-dropdown">
+            <span onClick={() => navigate("/sellerproducts")}>
+              View All Products
+            </span>
+            <span onClick={() => navigate("/sellerproducts/add")}>
+              Add Products
+            </span>
+          </div>
+        </li>
+          }
+          {/* <li className="header-dropdown">
             <span
               onClick={() => navigate("/products")}
               className={`header-link ${
@@ -66,8 +104,8 @@ export default function Navbar(props) {
                 Add Products
               </span>
             </div>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <span
               onClick={() => navigate("/")}
               className={`header-link ${
@@ -76,7 +114,7 @@ export default function Navbar(props) {
             >
               Categories
             </span>
-          </li>
+          </li> */}
           <li>
             <span
               onClick={() => navigate("/")}
@@ -127,7 +165,7 @@ export default function Navbar(props) {
                     Hi, {context.getUsername()}
                 </span>
                 <div className="header-link-dropdown">
-                <span onClick={() => navigate("/accounts")}>
+                <span onClick={() => navigate("/account")}>
                     Account
                 </span>
                 <span onClick={() => navigate("/orders")}>

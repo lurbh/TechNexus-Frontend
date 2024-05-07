@@ -171,7 +171,7 @@ export default function EditProductsForm(props) {
               formState.quantity_available,
               image_url
             );
-            navigate("/products");
+            navigate("/sellerproducts");
           }}
         >
           Edit Product
