@@ -1,7 +1,7 @@
 window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\User\\AppData\\Roaming",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_18292_PUEGWIZMRGPFCRWP",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_26968_SQWJMLZDWLDRHFOJ",
   "CLOUDINARY_NAME": "dymr3ncda",
   "CLOUDINARY_UPLOAD_PRESET": "TechNexus",
   "CLOUDINARY_URL": "cloudinary://234827372618192:9ZuP0NZRAoU2p4nqPsRp68kN8pc@dymr3ncda",
@@ -15,7 +15,7 @@ window.env = {
   "CYGWIN": "mintty",
   "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
   "EDITOR": "C:\\WINDOWS\\notepad.exe",
-  "EFC_5592": "1",
+  "EFC_5324": "1",
   "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
   "FPS_BROWSER_USER_PROFILE_STRING": "Default",
   "GIT_ASKPASS": "c:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
@@ -91,6 +91,6 @@ window.env = {
   "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
   "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-c6773d8004-sock",
   "VSCODE_INJECTION": "1",
-  "VSCODE_NONCE": "e21a0b02-0f2d-4dd1-ab03-058f72821b46",
+  "VSCODE_NONCE": "1e4fb90e-429c-4f9e-b10a-7216d55efcc9",
   "windir": "C:\\WINDOWS"
 };

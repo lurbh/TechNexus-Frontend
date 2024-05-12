@@ -153,6 +153,18 @@ export default function UserContextData(props) {
       }
     } catch (error) {
       console.log("Error", error);
+      if (error.response.status === 401)
+      {
+        setAccessToken("");
+        setRefreshToken("");
+        setEmail("");
+        setUsername("");
+        setRole(0);
+        setLoginState(false);
+        setUserID(0);
+        clearAuthHeader();
+        localStorage.clear();
+      }
       return false;
     }
   };
