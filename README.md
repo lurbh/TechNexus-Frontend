@@ -5,14 +5,14 @@ The TechNexus Frontend React application is built using React.js, a popular Java
 
 ## 2. Components:
 
-Header: Displays the TechNexus logo and navigation links.
-Footer: Displays copyright information and links to other pages.
-Home: Landing page displaying featured products and news articles.
-ProductList: Displays a list of products with filtering and sorting options.
-ProductDetails: Displays detailed information about a specific product.
-Cart: Displays the user's shopping cart with the ability to add, remove, and update items.
-Checkout: Allows the user to review their order and proceed to payment.
-Orders: Displays a list of the user's past orders with order details.
+* Header: Displays the TechNexus logo and navigation links.
+* Footer: Displays copyright information and links to other pages.
+* Home: Landing page displaying featured products and news articles.
+* ProductList: Displays a list of products with filtering and sorting options.
+* ProductDetails: Displays detailed information about a specific product.
+* Cart: Displays the user's shopping cart with the ability to add, remove, and update items.
+* Checkout: Allows the user to review their order and proceed to payment.
+* Orders: Displays a list of the user's past orders with order details.
 
 ## 3. State Management:
 
