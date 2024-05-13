@@ -29,31 +29,26 @@ export default function OrdersContextData(props) {
   }, [userContext]);
 
   const getOrderByID = async (order_id) => {
-    if(orders.length)
-    {
-        const foundOrder = orders.filter((o) => o.id === parseInt(order_id));
-        return foundOrder;
+    if (orders.length) {
+      const foundOrder = orders.filter((o) => o.id === parseInt(order_id));
+      return foundOrder;
     }
-    
   };
 
   const paymentCompleted = async (order_id) => {
-    try
-    {
-        const response = await APIHandler.put(`/orders/payment/${order_id}`);
-        if (response.status === 200) {
+    try {
+      const response = await APIHandler.put(`/orders/payment/${order_id}`);
+      if (response.status === 200) {
         const cloneorders = orders.slice();
         const indexToUpdate = cloneorders.findIndex((p) => p.id === order_id);
         cloneorders.splice(indexToUpdate, 1, response.data.orders);
         setOrders(cloneorders);
         return true;
-        }
-        return false;
-    }
-    catch (error)
-    {
-        console.log(error);
-        if (error.response.status === 498) userContext.refresh();
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 498) userContext.refresh();
     }
   };
 

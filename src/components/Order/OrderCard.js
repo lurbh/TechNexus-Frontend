@@ -22,9 +22,16 @@ export default function OrderCard(props) {
         ))}
       </div>
       <div className="order-price">
-        { props.button && <button className="order-detail-button" onClick={()=>{
-            navigate(`/orders/${props.item.id}`)
-        }}>View Order</button> }
+        {props.button && (
+          <button
+            className="order-detail-button"
+            onClick={() => {
+              navigate(`/orders/${props.item.id}`);
+            }}
+          >
+            View Order
+          </button>
+        )}
         <span className="order-price-span">Total Price: {totalPrice}</span>
       </div>
     </div>

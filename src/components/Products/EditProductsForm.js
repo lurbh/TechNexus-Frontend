@@ -18,7 +18,6 @@ export default function EditProductsForm(props) {
     const fetchProducts = () => {
       let tempProduct = context.getProductByID(props.productID);
       if (tempProduct.length) {
-        console.log(tempProduct);
         setFormState(...tempProduct);
         setImage_url(tempProduct[0].image_url);
       }

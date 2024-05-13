@@ -55,9 +55,7 @@ export default function CartContextData(props) {
         }
         totalPrice = totalPrice.toFixed(2);
         setTotalPrice(totalPrice);
-      }
-      else
-      {
+      } else {
         setNoOfItems(0);
         setTotalPrice(0);
       }

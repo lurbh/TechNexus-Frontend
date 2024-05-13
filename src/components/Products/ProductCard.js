@@ -18,8 +18,7 @@ export default function Productsmcard(props) {
     }
   }, [cartcontext.cart, props.item.id]);
 
-  if(props.item.quantity_available <= 0)
-    return (<></>)
+  if (props.item.quantity_available <= 0) return <></>;
 
   return (
     <div className="smcard-product">

@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import ProductCardSeller from "./ProductCardSeller";
 
-
 export default function ProductsListSeller() {
   const context = useContext(ProductContext);
 

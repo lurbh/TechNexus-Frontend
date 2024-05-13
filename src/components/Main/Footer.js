@@ -10,7 +10,7 @@ export default function Footer() {
 
   const handleSubmit = () => {
     console.log(email);
-  }
+  };
 
   return (
     <footer className="footer">
@@ -48,7 +48,11 @@ export default function Footer() {
               setEmail(event.target.value);
             }}
           />
-          <button type="submit" className="submit-button" onClick={handleSubmit}>
+          <button
+            type="submit"
+            className="submit-button"
+            onClick={handleSubmit}
+          >
             <i className="bi bi-envelope-fill" />
           </button>
         </div>

@@ -16,13 +16,14 @@ export default function OrderInfo(props) {
     fetchorder();
   }, [props.orderID, ordercontext]);
 
-
   return (
     <div className="order-info">
-        <h2 className="order-info-title">Order Info</h2>
-        {
-            Object.keys(orderDetail).length === 0?<></>:<OrderCard item={orderDetail} />
-        }
+      <h2 className="order-info-title">Order Info</h2>
+      {Object.keys(orderDetail).length === 0 ? (
+        <></>
+      ) : (
+        <OrderCard item={orderDetail} />
+      )}
     </div>
-  )
+  );
 }

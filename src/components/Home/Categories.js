@@ -9,9 +9,13 @@ export default function Categories() {
     <section className="categories-section">
       <h2 className="categories-header">Categories</h2>
       <div className="card-category-holder">
-        {context.getCategories().map((cat) => {
-          return <CategoriesCard key={cat.id} item={cat} />;
-        })}
+        {context.getCategories().length > 0 ? (
+          context.getCategories().map((cat) => {
+            return <CategoriesCard key={cat.id} item={cat} />;
+          })
+        ) : (
+          <h4 className="loading">Loading ...</h4>
+        )}
       </div>
     </section>
   );

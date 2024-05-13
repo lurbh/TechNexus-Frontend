@@ -13,11 +13,12 @@ export const setAuthHeader = async (accessToken, refreshToken) => {
   localStorage.setItem("refreshToken", refreshToken);
   headersData["Authorization"] = `${accessToken}`;
   APIHandler.defaults.headers.common["Authorization"] =
-  headersData["Authorization"];
+    headersData["Authorization"];
 };
 
 export const clearAuthHeader = () => {
   delete APIHandler.defaults.headers.common["Authorization"];
+  headersData = {};
   localStorage.clear();
 };
 

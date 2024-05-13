@@ -153,8 +153,7 @@ export default function UserContextData(props) {
       }
     } catch (error) {
       console.log("Error", error);
-      if (error.response.status === 401)
-      {
+      if (error.response.status === 401) {
         setAccessToken("");
         setRefreshToken("");
         setEmail("");

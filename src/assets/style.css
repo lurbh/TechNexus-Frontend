@@ -210,6 +210,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  cursor: pointer;
 }
 
 .card-category {
@@ -672,76 +673,76 @@ select.product-input {
 }
 
 .list-search-holder {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .search-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .search-form h3 {
-    margin-bottom: 10px;
-  }
-  
-  .search-input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
 
-  .search-input-no {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 65px;
-  }
-  
-  .search-input-section {
-    margin-bottom: 10px;
-  }
+.search-form h3 {
+  margin-bottom: 10px;
+}
 
-  .search-input-section-checkboxes {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .search-input-section h4 {
-    margin-bottom: 5px;
-  }
-  
-  .search-input-section input[type="checkbox"] {
-    margin-right: 5px;
-  }
+.search-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
 
-  .search-btn {
-    background-color: #6c3a9b;
-    color: azure;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+.search-input-no {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 65px;
+}
 
-  .search-btn:hover {
-    background-color: #551a8b;
-  }
+.search-input-section {
+  margin-bottom: 10px;
+}
 
-  .search-button-box {
-    display: flex;
-    justify-content: space-between;
-  }
+.search-input-section-checkboxes {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
 
-  .price-holder {
-    display: flex;
-    justify-content: space-between;
-  }
+.search-input-section h4 {
+  margin-bottom: 5px;
+}
+
+.search-input-section input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.search-btn {
+  background-color: #6c3a9b;
+  color: azure;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #551a8b;
+}
+
+.search-button-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-holder {
+  display: flex;
+  justify-content: space-between;
+}
 
 /* About Us */
 .about-us {
@@ -1185,30 +1186,30 @@ select.product-input {
 }
 
 .order-info {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 .order-info-title {
-    margin-bottom: 25px;
-    text-align: center;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
 .order-detail-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #6c3a9b;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 25px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6c3a9b;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 25px;
 }
 
 .order-detail-button:hover {
-    background-color: #551a8b;
+  background-color: #551a8b;
 }
 
 /* Mobile Styles */
@@ -1446,10 +1447,9 @@ select.product-input {
   .cart-header-price,
   .cart-header-quantity,
   .cart-header-total-price,
-  .cart-header-actions{
+  .cart-header-actions {
     width: 0px;
     margin-right: 1rem;
     font-size: smaller;
   }
-
 }

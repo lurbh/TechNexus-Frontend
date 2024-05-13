@@ -134,29 +134,20 @@ export default function ProductContextData(props) {
     }
   };
 
-  const searchProduct = async (
-    name,
-    category,
-    brand,
-    minprice,
-    maxprice,
-  ) => {
-    const response = await APIHandler.post(`products/search`,{
-        name: name,
-        category: category,
-        brand: brand,
-        minprice: minprice,
-        maxprice: maxprice,
-    })
-    if(response.status === 200)
-    {
-        return response.data.products;
+  const searchProduct = async (name, category, brand, minprice, maxprice) => {
+    const response = await APIHandler.post(`products/search`, {
+      name: name,
+      category: category,
+      brand: brand,
+      minprice: minprice,
+      maxprice: maxprice,
+    });
+    if (response.status === 200) {
+      return response.data.products;
+    } else {
+      console.log("Error");
     }
-    else
-    {
-        console.log("Error")
-    }
-  }
+  };
 
   const getProductByID = (ProductParams) => {
     const foundProduct = products.filter(

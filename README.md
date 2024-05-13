@@ -1,18 +1,19 @@
 # TechNexus Frontend React Documentation
 
 ## 1. Introduction:
+
 The TechNexus Frontend React application is built using React.js, a popular JavaScript library for building user interfaces. This documentation provides an overview of the components, state management, routing, and other aspects of the TechNexus Frontend React application.
 
 ## 2. Components:
 
-* Header: Displays the TechNexus logo and navigation links.
-* Footer: Displays copyright information and links to other pages.
-* Home: Landing page displaying featured products and news articles.
-* ProductList: Displays a list of products with filtering and sorting options.
-* ProductDetails: Displays detailed information about a specific product.
-* Cart: Displays the user's shopping cart with the ability to add, remove, and update items.
-* Checkout: Allows the user to review their order and proceed to payment.
-* Orders: Displays a list of the user's past orders with order details.
+- Header: Displays the TechNexus logo and navigation links.
+- Footer: Displays copyright information and links to other pages.
+- Home: Landing page displaying featured products and news articles.
+- ProductList: Displays a list of products with filtering and sorting options.
+- ProductDetails: Displays detailed information about a specific product.
+- Cart: Displays the user's shopping cart with the ability to add, remove, and update items.
+- Checkout: Allows the user to review their order and proceed to payment.
+- Orders: Displays a list of the user's past orders with order details.
 
 ## 3. State Management:
 
@@ -55,4 +56,5 @@ Use npm/yarn commands (e.g., npm start) to start the development server and view
 Follow React best practices and component-based architecture for efficient development and maintenance.
 
 ## 10. Contact Information:
+
 For questions, feedback, or support related to the TechNexus Frontend React application, please contact frontend-support@technexus.com.
