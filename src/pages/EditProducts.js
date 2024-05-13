@@ -11,7 +11,7 @@ export default function EditProducts() {
   let navigate = useNavigate();
   const context = useContext(UserContext);
   useEffect(() => {
-    if (context.getRole() !== 1 || context.getRole() !== 3) navigate("/");
+    if (context.getRole() === 0 || context.getRole() === 2) navigate("/");
   }, [context, navigate]);
 
   return (
