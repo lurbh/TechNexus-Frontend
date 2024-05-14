@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { notifySuccess } from "../utils";
 
-export default function paymentComplet()
+export default function PaymentComplete()
 {
     const { orderID } = useParams();
     const navigate = useNavigate()
