@@ -94,7 +94,7 @@ export default function CartContextData(props) {
         product_id: product_id,
         quantity: cartqty + 1,
       });
-      if (response.status === 201) {
+      if (response.status === 202) {
         const clonecart = cart.slice();
         const indexToUpdate = clonecart.findIndex((p) => p.id === cartitemID);
         clonecart.splice(indexToUpdate, 1, response.data.message);
@@ -112,19 +112,19 @@ export default function CartContextData(props) {
       const cartitemID = getCartItemID(product_id);
       const cartqty = getCartItemQty(product_id);
       if (cartqty === 1) {
-        deleteFromCart(product_id);
+        deleteFromCart(product_id, product_name);
       } else {
         const response = await APIHandler.put(`/cart/usercart/${cartitemID}`, {
           user_id: userContext.userid,
           product_id: product_id,
           quantity: cartqty - 1,
         });
-        if (response.status === 201) {
+        if (response.status === 202) {
           const clonecart = cart.slice();
           const indexToUpdate = clonecart.findIndex((p) => p.id === cartitemID);
           clonecart.splice(indexToUpdate, 1, response.data.message);
           setCart(clonecart);
-          notifySuccess(`${product_name} quantity decreased to ${cartqty + 1}`,"Add Cart")
+          notifySuccess(`${product_name} quantity decreased to ${cartqty - 1}`,"Add Cart")
         }
       }
     } catch (error) {

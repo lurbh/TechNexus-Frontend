@@ -43,7 +43,7 @@ export default function UserContextData(props) {
         if (defaultUserName) {
           refresh();
           setLoginState(true);
-          setUserID(defaultUser);
+          setUserID(parseInt(defaultUser));
           notifySuccess(`${defaultUserName} has been Re-Login `, "Login")
         }
       } catch (error) {
