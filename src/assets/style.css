@@ -1186,7 +1186,9 @@ select.product-input {
 }
 
 .order-info {
-  margin-top: 25px;
+  padding-top: 25px;
+  background-color: #393939;
+  padding-bottom: 25px;
 }
 
 .order-info-title {
