@@ -49,7 +49,6 @@ export default function Navbar(props) {
               Home
             </span>
           </li>
-          {console.log(context.getRole())}
           {context.getRole() === 2 || context.getRole() === 0 ? (
             <li className="header-dropdown">
               <span

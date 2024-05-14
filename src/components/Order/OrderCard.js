@@ -6,7 +6,10 @@ export default function OrderCard(props) {
   const navigate = useNavigate();
   const localDate = new Date(props.item.order_date).toLocaleString();
   let totalPrice = 0;
-  for (let i of props.item.order_items) totalPrice += i.unit_price;
+  for (let i of props.item.order_items) 
+  {
+    totalPrice += parseFloat(i.unit_price);
+  }
   return (
     <div className="card-order">
       <div className="order-bar">

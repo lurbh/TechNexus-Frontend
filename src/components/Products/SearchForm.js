@@ -12,11 +12,33 @@ export default function SeachForm(props) {
   const [brand, setBrand] = useState([]);
 
   useEffect(() => {
-    if (props.catogeryID) {
-      setCategory([parseInt(props.catogeryID)]);
-      submitSearch();
+    if(props.catogeryID)
+        setCategory(props.catogeryID);
+    else
+    {
+        setFormState({
+            name: "",
+            minprice: 0,
+            maxprice: 0,
+        })
+        setCategory([])
+        setBrand([])
     }
-  }, [props.catogeryID]);
+  },[props.catogeryID])
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const products = await productcontext.searchProduct(
+            formState.name,
+            category,
+            brand,
+            formState.minprice,
+            formState.maxprice
+            );
+            props.setProducts(products);
+        }
+    fetchData();
+  },[productcontext]);
 
   const updateFormField = (e) => {
     setFormState({
@@ -70,6 +92,7 @@ export default function SeachForm(props) {
       maxprice: 0,
     });
   };
+
 
   return (
     <div className="search-form">
