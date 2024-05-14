@@ -44,7 +44,7 @@ export default function Productsmcard(props) {
               <button
                 className="btn-remove-from-cart"
                 onClick={(e) => {
-                  cartcontext.deleteFromCart(props.item.id);
+                  cartcontext.deleteFromCart(props.item.id, props.item.product_name);
                 }}
               >
                 Remove
@@ -52,7 +52,7 @@ export default function Productsmcard(props) {
               <button
                 className="product-minus-quantity"
                 onClick={(e) => {
-                  cartcontext.decreaseQuantity(props.item.id);
+                  cartcontext.decreaseQuantity(props.item.id, props.item.product_name);
                 }}
               >
                 -
@@ -61,7 +61,7 @@ export default function Productsmcard(props) {
               <button
                 className="product-plus-quantity"
                 onClick={(e) => {
-                  cartcontext.increaseQuantity(props.item.id);
+                  cartcontext.increaseQuantity(props.item.id, props.item.product_name);
                 }}
               >
                 +
@@ -71,7 +71,7 @@ export default function Productsmcard(props) {
             <button
               className="btn-add-to-cart"
               onClick={(e) => {
-                cartcontext.addToCart(props.item.id);
+                cartcontext.addToCart(props.item.id, props.item.product_name);
               }}
             >
               Add to Cart

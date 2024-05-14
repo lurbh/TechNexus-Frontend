@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { notifySuccess } from "../utils";
 
 const CloudinaryScriptContext = createContext();
 
@@ -27,6 +28,7 @@ function CloudinaryUploadWidget({ uwConfig, setImg_Url, setImage_url }) {
         uwConfig,
         (error, result) => {
           if (!error && result && result.event === "success") {
+            notifySuccess("Image Uploaded", "Image")
             setImg_Url(result.info.secure_url);
             setImage_url(result.info.secure_url);
           }

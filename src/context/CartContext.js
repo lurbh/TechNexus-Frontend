@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import APIHandler from "../api/api";
 import { UserContext } from "./UserContext";
+import { notifyInfo, notifySuccess } from "../utils";
 
 export const CartContext = createContext();
 
@@ -36,6 +37,7 @@ export default function CartContextData(props) {
           setCart([]);
         }
       } catch (error) {
+
         console.log(error);
         if (error.response.status === 498) userContext.refresh();
       }
@@ -65,16 +67,17 @@ export default function CartContextData(props) {
     }
   }, [cart]);
 
-  const addToCart = async (product_id) => {
+  const addToCart = async (product_id, product_name) => {
     try {
       const response = await APIHandler.post("/cart/usercart", {
         user_id: userContext.userid,
         product_id: product_id,
         quantity: 1,
       });
-
+      
       if (response.status === 201) {
         setCart([...cart, response.data.message]);
+        notifySuccess(`${product_name} Added to Cart`,"Add Cart")
       }
     } catch (error) {
       console.log(error);
@@ -82,7 +85,7 @@ export default function CartContextData(props) {
     }
   };
 
-  const increaseQuantity = async (product_id) => {
+  const increaseQuantity = async (product_id, product_name) => {
     try {
       const cartitemID = getCartItemID(product_id);
       const cartqty = getCartItemQty(product_id);
@@ -96,6 +99,7 @@ export default function CartContextData(props) {
         const indexToUpdate = clonecart.findIndex((p) => p.id === cartitemID);
         clonecart.splice(indexToUpdate, 1, response.data.message);
         setCart(clonecart);
+        notifySuccess(`${product_name} quantity increased to ${cartqty + 1}`,"Add Cart")
       }
     } catch (error) {
       console.log(error);
@@ -103,7 +107,7 @@ export default function CartContextData(props) {
     }
   };
 
-  const decreaseQuantity = async (product_id) => {
+  const decreaseQuantity = async (product_id, product_name) => {
     try {
       const cartitemID = getCartItemID(product_id);
       const cartqty = getCartItemQty(product_id);
@@ -120,6 +124,7 @@ export default function CartContextData(props) {
           const indexToUpdate = clonecart.findIndex((p) => p.id === cartitemID);
           clonecart.splice(indexToUpdate, 1, response.data.message);
           setCart(clonecart);
+          notifySuccess(`${product_name} quantity decreased to ${cartqty + 1}`,"Add Cart")
         }
       }
     } catch (error) {
@@ -128,7 +133,7 @@ export default function CartContextData(props) {
     }
   };
 
-  const deleteFromCart = async (product_id) => {
+  const deleteFromCart = async (product_id, product_name) => {
     try {
       const cartitemID = getCartItemID(product_id);
       const response = await APIHandler.delete(`/cart/usercart/${cartitemID}`);
@@ -137,6 +142,7 @@ export default function CartContextData(props) {
         const indexToUpdate = clonecart.findIndex((p) => p.id === cartitemID);
         clonecart.splice(indexToUpdate, 1);
         setCart(clonecart);
+        notifySuccess(`${product_name} Removed to Cart`,"Remove Cart")
       }
     } catch (error) {
       console.log(error);
@@ -151,6 +157,7 @@ export default function CartContextData(props) {
       });
       if (response.status === 200) {
         setCart([]);
+        notifyInfo("Proceeding to payment page", "payment")
         window.location.href = response.data.stripeURL;
       }
     } catch (error) {

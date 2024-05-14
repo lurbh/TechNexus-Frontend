@@ -11,6 +11,7 @@ export default function ProductsSeller() {
   const context = useContext(UserContext);
 
   useEffect(() => {
+    console.log(context.getRole())
     if (context.getRole() === 0 || context.getRole() === 2) navigate("/");
   }, [context, navigate]);
 

@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import APIHandler from "../api/api";
 import { UserContext } from "./UserContext";
+import { notifyError, notifySuccess } from "../utils";
 
 export const ProductContext = createContext();
 
@@ -59,8 +60,10 @@ export default function ProductContextData(props) {
             image_url: image_url,
           },
         ]);
+        notifySuccess(`${product_name} has been added`, "Product Added")
       }
     } catch (error) {
+      notifyError(`Erro adding ${product_name}`, "Product add Error")
       console.log(error);
       userContext.refresh();
       addProduct(
@@ -113,6 +116,7 @@ export default function ProductContextData(props) {
         const indexToUpdate = prevState.findIndex((p) => p.id === id);
         prevState.splice(indexToUpdate, 1, updatedProduct);
       });
+      notifySuccess(`${product_name} has been updated`, "Product Updated")
     } else if (response.status === 498) {
       userContext.refresh();
     }
@@ -121,15 +125,18 @@ export default function ProductContextData(props) {
   const deleteProduct = async (ProductID) => {
     const response = await APIHandler.delete(`/products/${ProductID}`);
     if (response.status === 200) {
+        const product = getProductByID(ProductID)
       setProducts((prevState) => {
         const indexToUpdate = prevState.findIndex((p) => p.id === ProductID);
         prevState.splice(indexToUpdate, 1);
       });
+      notifySuccess(`${product.product_name} has been Deleted`, "Product Deleted")
       // const cloneproducts = products.slice();
       // const indexToUpdate = cloneproducts.findIndex((p) => p.id===ProductID)
       // cloneproducts.splice(indexToUpdate,1);
       // setProducts(cloneproducts);
     } else if (response.status === 498) {
+        
       userContext.refresh();
     }
   };

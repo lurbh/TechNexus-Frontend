@@ -22,7 +22,7 @@ export default function CartCard(props) {
           <button
             className="cart-minus-quantity"
             onClick={(e) => {
-              cartcontext.decreaseQuantity(props.item.product_id);
+              cartcontext.decreaseQuantity(props.item.id, props.item.product_name);
             }}
           >
             -
@@ -31,7 +31,7 @@ export default function CartCard(props) {
           <button
             className="cart-plus-quantity"
             onClick={(e) => {
-              cartcontext.increaseQuantity(props.item.product_id);
+              cartcontext.increaseQuantity(props.item.id, props.item.product_name)
             }}
           >
             +
@@ -45,7 +45,7 @@ export default function CartCard(props) {
         <button
           className="cart-delete-item"
           onClick={(e) => {
-            cartcontext.deleteFromCart(props.item.product_id);
+            cartcontext.deleteFromCart(props.item.id, props.item.product_name);
           }}
         >
           Delete

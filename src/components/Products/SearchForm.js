@@ -12,7 +12,6 @@ export default function SeachForm(props) {
   const [brand, setBrand] = useState([]);
 
   useEffect(() => {
-    console.log(props.catogeryID);
     if (props.catogeryID) {
       setCategory([parseInt(props.catogeryID)]);
       submitSearch();

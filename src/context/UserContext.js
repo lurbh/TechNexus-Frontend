@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import APIHandler, { setAuthHeader, clearAuthHeader } from "../api/api";
+import { notifyError, notifyInfo, notifySuccess } from "../utils";
 
 export const UserContext = createContext();
 
@@ -37,12 +38,13 @@ export default function UserContextData(props) {
         setEmail(defaultemail);
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
-        setRole(defaultrole);
+        setRole(parseInt(defaultrole));
         setAuthHeader(accessToken, refreshToken);
         if (defaultUserName) {
           refresh();
           setLoginState(true);
           setUserID(defaultUser);
+          notifySuccess(`${defaultUserName} has been Re-Login `, "Login")
         }
       } catch (error) {
         console.error("Error in username and id retrieval and token", error);
@@ -71,8 +73,16 @@ export default function UserContextData(props) {
       confirm_password: confirm_password,
       role_id: role_id,
     });
-    if (response.status === 201) return true;
-    else return false;
+    if (response.status === 201) 
+    {
+        notifyInfo(`${username} has been registered successfully`, "Register")
+        return true;
+    }    
+    else 
+    {
+        notifyError(`Registration failed`, "Register")
+        return false;
+    }
   };
 
   const login = async (email, password) => {
@@ -98,12 +108,14 @@ export default function UserContextData(props) {
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem("role", response.data.user.role_id);
         localStorage.setItem("UserID", response.data.user.user_id);
+        notifyInfo("Login Successful", "Login")
         return true;
       } else {
         return false;
       }
     } catch (error) {
       console.log("Error", error);
+      notifyError("Login failed", "Login")
       return false;
     }
   };
@@ -118,6 +130,7 @@ export default function UserContextData(props) {
         localStorage.getItem("refreshToken")
       );
     } catch (error) {
+      notifyError("Refresh Key Expired. Proceeding to logout", "Refresh Key Expired")
       console.log("Error", error);
       setAccessToken("");
       setRefreshToken("");
@@ -147,6 +160,7 @@ export default function UserContextData(props) {
         setUserID(0);
         clearAuthHeader();
         localStorage.clear();
+        notifyInfo("Logout Successful", "Logout")
         return true;
       } else {
         return false;
@@ -163,6 +177,7 @@ export default function UserContextData(props) {
         setUserID(0);
         clearAuthHeader();
         localStorage.clear();
+        notifyError("Refresh Key Expired. Proceeding to logout", "Refresh Key Expired")
       }
       return false;
     }
