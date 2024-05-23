@@ -4,6 +4,11 @@
 
 The TechNexus Frontend React application is built using React.js, a popular JavaScript library for building user interfaces. This documentation provides an overview of the components, state management, routing, and other aspects of the TechNexus Frontend React application.
 
+
+* Live Webpage of Frontend: [Link](https://technexus-react.netlify.app)
+* Live Link for API and Admin Backend : [Link](https://technexus-backend.onrender.com)
+* GitHub Repository for FrontEnd (ReactJS) : [Link](https://github.com/lurbh/TechNexus-Frontend)
+
 ## 2. Components:
 
 - Header: Displays the TechNexus logo and navigation links.
@@ -18,7 +23,6 @@ The TechNexus Frontend React application is built using React.js, a popular Java
 ## 3. State Management:
 
 Context API: Used for managing global state such as user authentication status and shopping cart contents.
-Reducer: Implements actions and reducers for updating global state.
 
 ## 4. Routing:
 
@@ -27,7 +31,6 @@ React Router: Handles client-side routing to navigate between different pages/co
 ## 5. External Libraries:
 
 Axios: Used for making HTTP requests to the backend API for data fetching and submission.
-React Bootstrap: Provides pre-styled UI components for faster and responsive frontend development.
 React Icons: Library for adding icons to the UI components.
 
 ## 6. Development Environment:
@@ -40,8 +43,8 @@ Create React App: Command-line tool for quickly setting up React projects with a
 src/: Contains the source code of the React application.
 components/: Contains reusable UI components used across different pages.
 pages/: Contains React components representing different pages of the application.
-context/: Contains context providers and reducers for state management.
-services/: Contains utility functions for making HTTP requests and handling API responses.
+context/: Contains context providers for state management.
+utils/: Contains utility functions 
 assets/: Contains static assets such as images and CSS files.
 
 ## 8. Deployment:
@@ -58,3 +61,5 @@ Follow React best practices and component-based architecture for efficient devel
 ## 10. Contact Information:
 
 For questions, feedback, or support related to the TechNexus Frontend React application, please contact frontend-support@technexus.com.
+
+## 11. Future Upgrades
