@@ -2,12 +2,12 @@
 
 ## 1. Introduction:
 
-The TechNexus Frontend React application is built using React.js, a popular JavaScript library for building user interfaces. This documentation provides an overview of the components, state management, routing, and other aspects of the TechNexus Frontend React application.
+TechNexus E-commerce is an online platform dedicated to providing users with a seamless shopping experience for a wide range of technology products. From smartphones and laptops to accessories and gadgets, TechNexus E-commerce aims to offer a diverse selection of high-quality tech products to meet the needs of tech enthusiasts and casual users alike. The TechNexus Frontend React application is built using React.js, a popular JavaScript library for building user interfaces. This documentation provides an overview of the components, state management, routing, and other aspects of the TechNexus Frontend React application.
 
 
 * Live Webpage of Frontend: [Link](https://technexus-react.netlify.app)
 * Live Link for API and Admin Backend : [Link](https://technexus-backend.onrender.com)
-* GitHub Repository for FrontEnd (ReactJS) : [Link](https://github.com/lurbh/TechNexus-Frontend)
+* GitHub Repository for Backend (Express) : [Link](https://github.com/lurbh/TechNexus-Backend)
 
 ## 2. Components:
 
@@ -58,8 +58,15 @@ Install Node.js and npm/yarn to run the React application locally.
 Use npm/yarn commands (e.g., npm start) to start the development server and view the application in the browser.
 Follow React best practices and component-based architecture for efficient development and maintenance.
 
-## 10. Contact Information:
+## 10. Technologies Used
+* React [Link](https://react.dev)
+* CSS [Link](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* Cloudinary [Link](https://cloudinary.com)
+* Axios [Link](https://axios-http.com/docs/intro)
+* React-Toastify [Link](https://www.npmjs.com/package/react-toastify)
+
+## 11. Contact Information:
 
 For questions, feedback, or support related to the TechNexus Frontend React application, please contact frontend-support@technexus.com.
 
-## 11. Future Upgrades
+## 12. Future Upgrades
